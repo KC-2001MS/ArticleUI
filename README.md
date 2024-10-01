@@ -2,9 +2,8 @@
 
 ArticleUI is a framework that allows you to display headings and content with simple code.
 
-:::note warn
-This package is currently under development.
-:::
+> [!WARNING]
+> This package is currently under development.
 
 ## Description
 
