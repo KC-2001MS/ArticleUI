@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation 
+    url: https://iroiro.dev/ArticleUI/documentation/articleui/
+    about: More information on using ArticleUI can be found here.
