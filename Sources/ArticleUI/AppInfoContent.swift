@@ -55,8 +55,8 @@ public struct AppInfoContent<Content: View>: View {
                             string: "https://apps.apple.com/app/\(appInfo.id)"
                         )!
                     ){
-                        //                        Image("Download", bundle: .module)
-                        Image("Download")
+                        Image("Download", bundle: .module)
+                        //                        Image("Download")
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
@@ -86,8 +86,8 @@ public struct AppInfoContent<Content: View>: View {
                             string: "https://apps.apple.com/app/\(appInfo.id)"
                         )!
                     ){
-                        //                        Image("Download", bundle: .module)
-                        Image("Download")
+                        Image("Download", bundle: .module)
+                        //                        Image("Download")
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
@@ -97,18 +97,18 @@ public struct AppInfoContent<Content: View>: View {
 }
 
 
-#Preview(traits: .sizeThatFitsLayout) {
-    let info: AppInfo = .init(
-        name: "Sample",
-        imageName: "Sample",
-        id: "id1612026794"
-    )
-    
-    AppInfoContent(appInfo: info) {
-        Text("Simple Editor X Contents")
-            .multilineTextAlignment(.leading)
-            .font(.callout)
-            .foregroundStyle(.secondary)
-    }
-}
+//#Preview(traits: .sizeThatFitsLayout) {
+//    let info: AppInfo = .init(
+//        name: "Sample",
+//        imageName: "Sample",
+//        id: "id1612026794"
+//    )
+//    
+//    AppInfoContent(appInfo: info) {
+//        Text("Simple Editor X Contents")
+//            .multilineTextAlignment(.leading)
+//            .font(.callout)
+//            .foregroundStyle(.secondary)
+//    }
+//}
 #endif

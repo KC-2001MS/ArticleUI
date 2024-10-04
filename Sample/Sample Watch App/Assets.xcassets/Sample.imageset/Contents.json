@@ -1,0 +1,20 @@
+{
+  "images" : [
+    {
+      "filename" : "iOS,iPadOSicon.png",
+      "idiom" : "iphone"
+    },
+    {
+      "filename" : "iOS,iPadOSicon 1.png",
+      "idiom" : "ipad"
+    },
+    {
+      "filename" : "macOS512@2x.png",
+      "idiom" : "mac"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
