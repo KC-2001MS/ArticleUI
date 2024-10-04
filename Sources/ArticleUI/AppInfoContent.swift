@@ -16,13 +16,13 @@ public struct AppInfoContent<Content: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
-    let appInfo: AppInfo
+    let app: AppInfo
     
     var content: Content
     
     
-    public init(appInfo: AppInfo, @ViewBuilder content: () -> Content) {
-        self.appInfo = appInfo
+    public init(app: AppInfo, @ViewBuilder content: () -> Content) {
+        self.app = app
         self.content = content()
     }
     
@@ -31,14 +31,14 @@ public struct AppInfoContent<Content: View>: View {
             VStack(alignment: .leading, spacing: 10) {
                 HStack(alignment: .center) {
                     //                    Image(appInfo.imageName, bundle: .module)
-                    Image(appInfo.imageName)
+                    Image(app.imageName)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100)
                     
                     Spacer()
                     
-                    Text(appInfo.name)
+                    Text(app.name)
                         .bold()
                 }
                 .frame(maxWidth: .infinity,alignment: .center)
@@ -52,7 +52,7 @@ public struct AppInfoContent<Content: View>: View {
                     
                     Link(
                         destination: URL(
-                            string: "https://apps.apple.com/app/\(appInfo.id)"
+                            string: "https://apps.apple.com/app/\(app.id)"
                         )!
                     ){
                         Image("Download", bundle: .module)
@@ -65,14 +65,15 @@ public struct AppInfoContent<Content: View>: View {
             HStack(alignment: .bottom, spacing: 10) {
                 VStack(alignment: .center) {
                     //                    Image(appInfo.imageName, bundle: .module)
-                    Image(appInfo.imageName)
+                    Image(app.imageName)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100)
+                        .padding(.vertical, 10)
                     
-                    Text(appInfo.name)
+                    Text(app.name)
                 }
-                .frame(width: 125)
+                .frame(width: 175)
                 .frame(maxHeight: .infinity, alignment: .center)
                 
                 
@@ -85,7 +86,7 @@ public struct AppInfoContent<Content: View>: View {
                     
                     Link(
                         destination: URL(
-                            string: "https://apps.apple.com/app/\(appInfo.id)"
+                            string: "https://apps.apple.com/app/\(app.id)"
                         )!
                     ){
                         Image("Download", bundle: .module)
