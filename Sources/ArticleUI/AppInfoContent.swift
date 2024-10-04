@@ -72,7 +72,9 @@ public struct AppInfoContent<Content: View>: View {
                     
                     Text(appInfo.name)
                 }
-                .frame(width: 125, height: 125)
+                .frame(width: 125)
+                .frame(maxHeight: .infinity, alignment: .center)
+                
                 
                 VStack(alignment: .trailing, spacing: 10) {
                     content
