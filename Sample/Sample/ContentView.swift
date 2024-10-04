@@ -15,57 +15,100 @@ struct ContentView: View {
         NavigationStack {
             Article {
                 Section {
-                    Text("Press the plus button and fill in the word registration screen. You can also register words via the Shortcut App.")
-#if os(iOS)
-                    ShortcutsLink()
-#endif
+                    Text("Create easily organized article UI")
+                        .foregroundStyle(.gray)
+                    Text(
+                        "Welcome to ArtcleUI. This package allows you to easily create views consisting of multiple headings and content like articles."
+                    )
                 } header: {
-                    Text("Registering words")
+                    Text("What is ArticleUI")
+                        .bold()
+                        .font(.largeTitle)
+                        .foregroundStyle(Color.primary)
                 }
                 
                 Section {
-                    Text("You can hide words by pressing the button with the eye icon.The list of hidden words can be displayed with biometric identification.")
+                    Text(
+                        "Easily create a scrollable article UI; using Article and Section views, you can easily create views that include headings and content."
+                    )
                 } header: {
-                    Text("Hide words")
+                    Text("Build easily scrollable views")
                 }
                 
                 Section {
-                    Text("You can prioritize words by setting an importance level for each word.")
+                    Text(
+                        "This package supports many iOS as well as macOS, visionOS and watchOS. tvOS is in the process of scrolling adjustment."
+                    )
                 } header: {
-                    Text("Set priority level")
+                    Text("Support for many platforms")
                 }
                 
                 Section {
-                    Text("By adding a word to your favorites, you can add the word to your favorites list. You can also prevent words from being deleted.")
-                } header: {
-                    Text("Favorite")
-                }
-                
-                Section {
+                    Text(
+                        "This package can be found in the repository at the following URL"
+                    )
                     
-                    Text("If you find any problems with this application, please report them via this URL or email.")
-#if !os(watchOS) && !os(tvOS)
-                    Link("Bug Report Page", destination: URL(string: NSLocalizedString("Bug Report URL", comment: "Bug Report Page")) ?? URL(string: NSLocalizedString("https://kc-2001ms.github.io/en/", comment: "Iroiro's Top Page"))!)
-#endif
+                    Link(
+                        "ArticleUI",
+                        destination: URL(
+                            string: "https://github.com/KC-2001MS/ArticleUI"
+                        )!
+                    )
                 } header: {
-                    Text("Report bugs")
+                    Text("GitHub")
                 }
                 
                 Section {
-                    Text("You can review the privacy policy for this application at the following site")
-                    
-#if !os(watchOS) && !os(tvOS)
-                    Link("Privacy Policy Page", destination: URL(string: NSLocalizedString("https://kc-2001ms.github.io/en/privacy.html", comment: "Iroiro's Top Page")) ?? URL(string: NSLocalizedString("https://kc-2001ms.github.io/en/", comment: "Iroiro's Top Page"))!)
-#else
-                    Text(verbatim:"https://kc-2001ms.github.io/")
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-#endif
+                    HStack(alignment: .top) {
+                        Text("Keisuke Chinone")
+                            .bold()
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        VStack(alignment: .trailing) {
+                            Link(
+                                "GitHub",
+                                destination: URL(
+                                    string: "https://github.com/KC-2001MS"
+                                )!
+                            )
+                            Link(
+                                "Mail",
+                                destination: URL(
+                                    string: "mailto:iroiro.work1234@gmail.com"
+                                )!
+                            )
+                            Link(
+                                "X",
+                                destination: URL(
+                                    string: "https://twitter.com/IroIro1234work"
+                                )!
+                            )
+                            Link(
+                                "Mastodon",
+                                destination: URL(
+                                    string: "https://mastodon.social/@Iroiro"
+                                )!
+                            )
+                            Link(
+                                "Bluesky",
+                                destination: URL(
+                                    string: "https://bsky.app/profile/bluesky.iroiro.me"
+                                )!
+                            )
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
                 } header: {
-                    Text("Privacy Policy")
+                    Text("Author")
+                } footer: {
+                    Text(
+                        "Information about the author who manages this repository."
+                    )
                 }
             }
-            .navigationTitle("Help")
+            .navigationTitle("ArticleUI Help")
         }
     }
 }

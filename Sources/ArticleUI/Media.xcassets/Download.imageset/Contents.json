@@ -1,0 +1,68 @@
+{
+  "images" : [
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917 2.svg",
+      "idiom" : "iphone"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917 3.svg",
+      "idiom" : "ipad"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917 1.svg",
+      "idiom" : "mac"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917 1.svg",
+      "idiom" : "iphone",
+      "locale" : "en"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
+      "idiom" : "ipad",
+      "locale" : "en"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917.svg",
+      "idiom" : "mac",
+      "locale" : "en"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_blk_100317 1.svg",
+      "idiom" : "iphone",
+      "locale" : "ja"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg",
+      "idiom" : "ipad",
+      "locale" : "ja"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_JP_RGB_blk_100317.svg",
+      "idiom" : "mac",
+      "locale" : "ja"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FR_RGB_blk_100517 1.svg",
+      "idiom" : "iphone",
+      "locale" : "fr"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FR_RGB_blk_100517.svg",
+      "idiom" : "ipad",
+      "locale" : "fr"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_FR_RGB_blk_100217.svg",
+      "idiom" : "mac",
+      "locale" : "fr"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

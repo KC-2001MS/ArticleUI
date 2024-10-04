@@ -1,0 +1,24 @@
+//
+//  AppInfo.swift
+//  ArticleUI
+//
+//  Created by 茅根啓介 on 2024/10/05.
+//
+
+#if !os(tvOS)
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS 11, *)
+public struct AppInfo {
+    let name: String
+    let imageName: String
+    let id: String
+    
+    public init(name: String, imageName: String, id: String) {
+        self.name = name
+        self.imageName = imageName
+        self.id = id
+    }
+}
+#endif

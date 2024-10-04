@@ -23,6 +23,7 @@ struct SectionHeaderView<Content: View>: View {
 #if !os(visionOS)
             .foregroundStyle(Color.accentColor)
 #endif
+            .accessibilityAddTraits(.isHeader)
     }
 }
 

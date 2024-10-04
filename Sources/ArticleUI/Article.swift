@@ -20,30 +20,44 @@ public struct Article<Content: View>: View {
                                 SectionHeaderView {
                                     section.header
                                 }
+#if os(tvOS)
+                                .focusEffectDisabled()
+                                .focusable()
+#endif
                             }
                             
                             VStack(alignment: .leading,spacing: 5) {
                                 ForEach(section.content) { subview in
                                     subview
-                                        
+#if os(tvOS)
+                                        .focusEffectDisabled()
+                                        .focusable()
+#endif
                                 }
                                 
-//                                if !section.footer.isEmpty {
-//                                    SectionFooterView {
-//                                        section.footer
-//                                    }
-//                                }
+                                //                                if !section.footer.isEmpty {
+                                //                                    SectionFooterView {
+                                //                                        section.footer
+                                //                                    }
+                                //                                }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
 #if os(visionOS)
                             .padding(.horizontal)
                             .padding(.vertical, 25)
-                            .background(.regularMaterial, in: .rect(cornerRadius: 25))
+                            .background(
+                                .regularMaterial,
+                                in: .rect(cornerRadius: 25)
+                            )
 #endif
                             if !section.footer.isEmpty {
                                 SectionFooterView {
                                     section.footer
                                 }
+#if os(tvOS)
+                                .focusEffectDisabled()
+                                .focusable()
+#endif
                             }
                         }
                     }
@@ -53,9 +67,9 @@ public struct Article<Content: View>: View {
             .padding(25)
 #elseif os(watchOS)
             .padding(15)
-            #else
+#else
             .padding(20)
-            #endif
+#endif
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
 #if os(iOS)
@@ -71,7 +85,7 @@ extension Article {
         _ data: Data,
         @ViewBuilder content: @escaping (Data.Element) -> C
     ) where Data.Element: Identifiable,
-        Content == ForEach<Data, Data.Element.ID, C> {
+    Content == ForEach<Data, Data.Element.ID, C> {
         self.init {
             ForEach(data, content: content)
         }

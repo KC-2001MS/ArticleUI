@@ -12,9 +12,15 @@ let package = Package(
             name: "ArticleUI",
             targets: ["ArticleUI"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-docc-plugin.git", from: "1.4.0"),
+    ],
     targets: [
         .target(
-            name: "ArticleUI"
+            name: "ArticleUI",
+            resources: [
+                .process("Media.xcassets")
+            ]
         ),
         .testTarget(
             name: "ArticleUITests",
