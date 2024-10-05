@@ -12,6 +12,7 @@ import SwiftUI
 @available(macOS 15, *)
 @available(visionOS 2, *)
 @available(watchOS 11, *)
+@available(*, deprecated, message: "use `AppDescriptionContent(name: LocalizedStringKey, iconName: String, id: String, @ViewBuilder content: () -> Content)`")
 public struct AppInfo {
     let name: LocalizedStringKey
     let imageName: String

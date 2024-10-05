@@ -59,7 +59,7 @@ struct ContentView: View {
                 }
                 
 //                Section {
-//                    AppInfoContent(appInfo: .init(name: "Sample", imageName: "Sample", id: "id1612026794")) {
+//                    AppInfoContent(app: .init(name: "Sample", imageName: "Sample", id: "id1612026794")) {
 //                        Text(
 //                            "This package supports many iOS as well as macOS, visionOS and watchOS. tvOS is in the process of scrolling adjustment."
 //                        )
