@@ -92,7 +92,7 @@ public struct AppDescriptionContent<Content: View>: View {
                             string: "https://apps.apple.com/app/\(id)"
                         )!
                     ){
-                        Image("Download", bundle: .module)
+                        Image("Download", bundle: Bundle.module)
                     }
                     .accessibilityLabel("Download \(name)")
                 }
@@ -130,7 +130,7 @@ public struct AppDescriptionContent<Content: View>: View {
                             string: "https://apps.apple.com/app/\(id)"
                         )!
                     ){
-                        Image("Download", bundle: .module)
+                        Image("Download", bundle: Bundle.module)
                     }
                     .accessibilityLabel("Download \(name)")
                 }
