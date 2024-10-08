@@ -85,6 +85,7 @@ extension ArticleStyle where Self == PlainArticleStyle {
 @available(watchOS 11, *)
 @available(tvOS 18, *)
 extension ArticleStyle where Self == GroupedArticleStyle {
+    /// The article style that describes the appearance of a grouped article.
     public static var grouped: GroupedArticleStyle {
         get {
             GroupedArticleStyle()
@@ -121,6 +122,7 @@ public struct PlainArticleStyle: ArticleStyle {
     }
 }
 
+/// The article style that describes the appearance of a grouped article.
 @available(iOS 18, *)
 @available(macOS 15, *)
 @available(visionOS 2, *)
