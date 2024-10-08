@@ -166,7 +166,9 @@ The searched data can be saved in the device and can be viewed offline. You can 
 }
 ```
 
-<img src="images/noneButton.png" style="height:400px;object-fit: contain;"> 
+<img src="images/iOS.png" style="height:400px;object-fit: contain;"> 
+
+<img src="images/macOS.png" style="height:400px;object-fit: contain;"> 
 
 ## Swift-DocC
 
