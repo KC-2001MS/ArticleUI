@@ -17,10 +17,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "ArticleUI",
-            resources: [
-                .process("Media.xcassets")
-            ]
+            name: "ArticleUI"
         ),
         .testTarget(
             name: "ArticleUITests",

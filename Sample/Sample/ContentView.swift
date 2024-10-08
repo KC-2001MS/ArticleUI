@@ -8,7 +8,6 @@
 
 import SwiftUI
 import ArticleUI
-import AppIntents
 
 struct ContentView: View {
     var body: some View {
@@ -58,53 +57,67 @@ struct ContentView: View {
                     Text("GitHub")
                 }
                 
-//                Section {
-//                    AppInfoContent(app: .init(name: "Sample", imageName: "Sample", id: "id1612026794")) {
-//                        Text(
-//                            "This package supports many iOS as well as macOS, visionOS and watchOS. tvOS is in the process of scrolling adjustment."
-//                        )
-//                    }
-//                }
+#if !os(tvOS) && !os(watchOS)
+                Section {
+                    AppDescriptionContent(
+                        iconName: "Japan Corp Info",
+                        name: "Japan Corp Info",
+                        id: "id6477782786"
+                    ) {
+                        Text(
+                            """
+The Japan Corp Info App is the best way to easily manage your Japan corporation information.
+The app allows you to easily search gBizINFO data provided by METI, a ministry of the Japanese government.
+The searched data can be saved in the device and can be viewed offline. You can also add memos and tags to each company, which can be used for corporate analysis.
+"""
+                        )
+                    }
+                } header: {
+                    Text("Using this package")
+                }
+                .articleRowSeparator(true)
+#endif
                 
                 Section {
                     HStack(alignment: .top) {
-                        Text("Keisuke Chinone")
-                            .bold()
-                            .font(.headline)
-                        
-                        Spacer()
-                        
-                        VStack(alignment: .trailing) {
-                            Link(
-                                "GitHub",
-                                destination: URL(
-                                    string: "https://github.com/KC-2001MS"
-                                )!
-                            )
-                            Link(
-                                "Mail",
-                                destination: URL(
-                                    string: "mailto:iroiro.work1234@gmail.com"
-                                )!
-                            )
-                            Link(
-                                "X",
-                                destination: URL(
-                                    string: "https://twitter.com/IroIro1234work"
-                                )!
-                            )
-                            Link(
-                                "Mastodon",
-                                destination: URL(
-                                    string: "https://mastodon.social/@Iroiro"
-                                )!
-                            )
-                            Link(
-                                "Bluesky",
-                                destination: URL(
-                                    string: "https://bsky.app/profile/bluesky.iroiro.me"
-                                )!
-                            )
+                        LabeledContent {
+                            VStack(alignment: .trailing) {
+                                Link(
+                                    "GitHub",
+                                    destination: URL(
+                                        string: "https://github.com/KC-2001MS"
+                                    )!
+                                )
+                                Link(
+                                    "Mail",
+                                    destination: URL(
+                                        string: "mailto:iroiro.work1234@gmail.com"
+                                    )!
+                                )
+                                Link(
+                                    "X",
+                                    destination: URL(
+                                        string: "https://twitter.com/IroIro1234work"
+                                    )!
+                                )
+                                Link(
+                                    "Mastodon",
+                                    destination: URL(
+                                        string: "https://mastodon.social/@Iroiro"
+                                    )!
+                                )
+                                Link(
+                                    "Bluesky",
+                                    destination: URL(
+                                        string: "https://bsky.app/profile/bluesky.iroiro.me"
+                                    )!
+                                )
+                            }
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                        } label: {
+                            Text("Keisuke Chinone")
+                                .bold()
+                                .font(.headline)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -116,7 +129,8 @@ struct ContentView: View {
                     )
                 }
             }
-            .navigationTitle("ArticleUI Help")
+            .articleStyle(.grouped)
+            .navigationTitle("Wellcome to ArticleUI")
         }
     }
 }

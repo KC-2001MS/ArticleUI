@@ -1,0 +1,66 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "ArticleUI" : {
+
+    },
+    "Author" : {
+
+    },
+    "Bluesky" : {
+
+    },
+    "Build easily scrollable views" : {
+
+    },
+    "Create easily organized article UI" : {
+
+    },
+    "Easily create a scrollable article UI; using Article and Section views, you can easily create views that include headings and content." : {
+
+    },
+    "GitHub" : {
+
+    },
+    "Information about the author who manages this repository." : {
+
+    },
+    "Keisuke Chinone" : {
+
+    },
+    "Mail" : {
+
+    },
+    "Mastodon" : {
+
+    },
+    "Support for many platforms" : {
+
+    },
+    "The Japan Corp Info App is the best way to easily manage your Japan corporation information.\nThe app allows you to easily search gBizINFO data provided by METI, a ministry of the Japanese government.\nThe searched data can be saved in the device and can be viewed offline. You can also add memos and tags to each company, which can be used for corporate analysis." : {
+
+    },
+    "This package can be found in the repository at the following URL" : {
+
+    },
+    "This package supports many iOS as well as macOS, visionOS and watchOS. tvOS is in the process of scrolling adjustment." : {
+
+    },
+    "Using this package" : {
+
+    },
+    "Welcome to ArtcleUI. This package allows you to easily create views consisting of multiple headings and content like articles." : {
+
+    },
+    "Wellcome to ArticleUI" : {
+
+    },
+    "What is ArticleUI" : {
+
+    },
+    "X" : {
+
+    }
+  },
+  "version" : "1.0"
+}

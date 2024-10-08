@@ -8,6 +8,7 @@
 import SwiftUI
 
 #if !os(tvOS) && !os(watchOS)
+/// View to add app title, icon and description.
 @available(iOS 18, *)
 @available(macOS 15, *)
 @available(visionOS 2, *)
@@ -17,15 +18,19 @@ public struct AppDescriptionContent<Content: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
-    var name: LocalizedStringKey
+    private var name: String
     
-    var iconName: String
+    private var iconName: String
     
-    var id: String
+    private var id: String
     
-    var content: Content
+    private var content: Content
     
     
+    /// View to introduce the app
+    /// - Parameters:
+    ///   - app: Variables with basic information about the app
+    ///   - content: View describing the app
     @available(*, deprecated, message: "use `init(name: LocalizedStringKey, iconName: String, id: String, @ViewBuilder content: () -> Content)`")
     public init(
         app: AppInfo,
@@ -37,9 +42,15 @@ public struct AppDescriptionContent<Content: View>: View {
         self.content = content()
     }
     
+    /// View to introduce the app
+    /// - Parameters:
+    ///   - iconName: Name of the asset for the application icon
+    ///   - name: App Name
+    ///   - id: App ID as listed in the App Store
+    ///   - content: View describing the app
     public init(
         iconName: String,
-        name: LocalizedStringKey,
+        name: String,
         id: String,
         @ViewBuilder content: () -> Content
     ) {
@@ -50,7 +61,7 @@ public struct AppDescriptionContent<Content: View>: View {
     }
     
     public var body: some View {
-        if dynamicTypeSize > .large || horizontalSizeClass == .compact {
+        if dynamicTypeSize > .xLarge || horizontalSizeClass == .compact {
             VStack(alignment: .leading, spacing: 10) {
                 HStack(alignment: .center) {
                     Image(iconName)
@@ -61,9 +72,13 @@ public struct AppDescriptionContent<Content: View>: View {
                     Spacer()
                     
                     Text(name)
+                        .font(.custom("", size: 13, relativeTo: .largeTitle))
                         .bold()
+                        .lineLimit(2)
                 }
                 .frame(maxWidth: .infinity,alignment: .center)
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel(name)
                 
                 VStack(alignment: .trailing, spacing: 10) {
                     content
@@ -77,8 +92,9 @@ public struct AppDescriptionContent<Content: View>: View {
                             string: "https://apps.apple.com/app/\(id)"
                         )!
                     ){
-                        Image("Download", bundle: Bundle.module)
+                        Image("Download", bundle: .module)
                     }
+                    .accessibilityLabel("Download \(name)")
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
@@ -92,9 +108,14 @@ public struct AppDescriptionContent<Content: View>: View {
                         .padding(.vertical, 10)
                     
                     Text(name)
+                        .font(.custom("", size: 13, relativeTo: .largeTitle))
+                        .bold()
+                        .lineLimit(2)
                 }
                 .frame(width: 150)
                 .frame(maxHeight: .infinity, alignment: .center)
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel(name)
                 
                 
                 VStack(alignment: .trailing, spacing: 10) {
@@ -109,15 +130,22 @@ public struct AppDescriptionContent<Content: View>: View {
                             string: "https://apps.apple.com/app/\(id)"
                         )!
                     ){
-                        Image("Download", bundle: Bundle.module)
+                        Image("Download", bundle: .module)
                     }
+                    .accessibilityLabel("Download \(name)")
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
+            .padding(.vertical, 15)
         }
     }
 }
 
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS, unavailable)
+@available(tvOS, unavailable)
 @available(*, deprecated, renamed: "AppDescriptionContent")
-typealias AppInfoContent = AppDescriptionContent
+public typealias AppInfoContent = AppDescriptionContent
 #endif
