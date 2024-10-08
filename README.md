@@ -2,9 +2,6 @@
 
 ArticleUI is a framework that allows you to display headings and content with simple code.
 
-> [!WARNING]
-> This package is currently under development.
-
 ## Description
 
 With this library, you can display headings and content with simple SwiftUI code.
