@@ -34,7 +34,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				ContentView.swift,
-				Localizable.xcstrings,
 				SampleApp.swift,
 			);
 			target = F7F8EC6F2CABC5D000A5E6BD /* Sample Watch App */;
@@ -177,7 +176,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ja,
 			);
 			mainGroup = F7F009522CABBF3D004B0D49;
 			minimizedProjectReferenceProxies = 1;

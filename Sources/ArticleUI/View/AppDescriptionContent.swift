@@ -18,7 +18,7 @@ public struct AppDescriptionContent<Content: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
-    private var name: String
+    private var name: LocalizedStringKey
     
     private var iconName: String
     
@@ -50,7 +50,7 @@ public struct AppDescriptionContent<Content: View>: View {
     ///   - content: View describing the app
     public init(
         iconName: String,
-        name: String,
+        name: LocalizedStringKey,
         id: String,
         @ViewBuilder content: () -> Content
     ) {
@@ -71,14 +71,14 @@ public struct AppDescriptionContent<Content: View>: View {
                     
                     Spacer()
                     
-                    Text(name)
+                    Text(name, bundle: .main)
                         .font(.custom("", size: 13, relativeTo: .largeTitle))
                         .bold()
                         .lineLimit(2)
                 }
                 .frame(maxWidth: .infinity,alignment: .center)
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel(name)
+                .accessibilityLabel(Text(name, bundle: .main))
                 
                 VStack(alignment: .trailing, spacing: 10) {
                     content
@@ -94,7 +94,7 @@ public struct AppDescriptionContent<Content: View>: View {
                     ){
                         Image("Download", bundle: Bundle.module)
                     }
-                    .accessibilityLabel("Download \(name)")
+                    .accessibilityLabel(Text("Download \(Text(name, bundle: .main))",bundle: .module))
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
@@ -107,7 +107,7 @@ public struct AppDescriptionContent<Content: View>: View {
                         .frame(width: 100)
                         .padding(.vertical, 10)
                     
-                    Text(name)
+                    Text(name, bundle: .main)
                         .font(.custom("", size: 13, relativeTo: .largeTitle))
                         .bold()
                         .lineLimit(2)
@@ -115,7 +115,7 @@ public struct AppDescriptionContent<Content: View>: View {
                 .frame(width: 150)
                 .frame(maxHeight: .infinity, alignment: .center)
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel(name)
+                .accessibilityLabel(Text(name, bundle: .main))
                 
                 
                 VStack(alignment: .trailing, spacing: 10) {
@@ -132,7 +132,7 @@ public struct AppDescriptionContent<Content: View>: View {
                     ){
                         Image("Download", bundle: Bundle.module)
                     }
-                    .accessibilityLabel("Download \(name)")
+                    .accessibilityLabel(Text("Download \(Text(name, bundle: .main))",bundle: .module))
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }

@@ -15,11 +15,11 @@ import SwiftUI
 @available(tvOS, unavailable)
 @available(*, deprecated, message: "use `AppDescriptionContent(name: LocalizedStringKey, iconName: String, id: String, @ViewBuilder content: () -> Content)`")
 public struct AppInfo {
-    let name: String
+    let name: LocalizedStringKey
     let imageName: String
     let id: String
     
-    public init(name: String, imageName: String, id: String) {
+    public init(name: LocalizedStringKey, imageName: String, id: String) {
         self.name = name
         self.imageName = imageName
         self.id = id
