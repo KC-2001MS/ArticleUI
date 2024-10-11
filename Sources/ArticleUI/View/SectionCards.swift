@@ -27,19 +27,19 @@ internal struct SectionHeaderView<Content: View>: View {
     }
     
     var body: some View {
-            VStack(alignment: .leading,spacing: 5) {
-                content
-            }
+        VStack(alignment: .leading,spacing: 5) {
+            content
+        }
 #if !os(watchOS) && !os(tvOS)
-            .font(.title)
+        .font(.title)
 #else
-            .font(.headline)
+        .font(.headline)
 #endif
-            .bold()
+        .bold()
 #if !os(visionOS)
-            .foregroundStyle(tint ?? Color.accentColor)
+        .foregroundStyle(tint ?? Color.accentColor)
 #endif
-            .accessibilityAddTraits(.isHeader)
+        .accessibilityAddTraits(.isHeader)
     }
 }
 

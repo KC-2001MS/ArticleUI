@@ -30,7 +30,7 @@ public extension View {
     /// Sets the display mode for the separator associated with this specific row.
     /// - Parameter visibility: The visibility of this row’s separators.
     /// - Returns: View of the adapted result
-    func articleRowSeparator(_ visibility: Bool) -> some View {
+    func articleRowSeparator(_ visibility: Bool = true) -> some View {
         containerValue(\.articleRowSeparatorVisibility, visibility)
     }
     
@@ -62,10 +62,22 @@ public extension View {
         containerValue(\.articleSectionSpacing, spacing)
     }
     
+    @available(
+        *,
+         deprecated,
+         message: "use `func articleFooterPlacement(placement: ArticleFooterPlacement) -> some View`"
+    )
     /// Whether to place the Footer at the bottom
     /// - Parameter isSticky: Boolean value of whether to place
     /// - Returns: View of the adapted result
     func stickyFooter(_ isSticky: Bool = true) -> some View {
         containerValue(\.stickyFooter, isSticky)
+    }
+    
+    /// Control the display position of the footer
+    /// - Parameter placement: Display position of footer
+    /// - Returns: View of the adapted result
+    func articleFooterPlacement(placement: ArticleFooterPlacement) -> some View {
+        containerValue(\.articleFooterPlacement, placement)
     }
 }

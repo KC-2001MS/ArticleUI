@@ -1,0 +1,827 @@
+{
+  "images" : [
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg",
+      "idiom" : "iphone"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 1.svg",
+      "idiom" : "ipad"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_US-UK_RGB_wht_092917.svg",
+      "idiom" : "mac"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 2.svg",
+      "idiom" : "vision"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_wht_100317 2.svg",
+      "idiom" : "iphone",
+      "locale" : "ja"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "ja"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_JP_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "ja"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg",
+      "idiom" : "vision",
+      "locale" : "ja"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 3.svg",
+      "idiom" : "iphone",
+      "locale" : "en"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 4.svg",
+      "idiom" : "ipad",
+      "locale" : "en"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_US-UK_RGB_wht_092917 1.svg",
+      "idiom" : "mac",
+      "locale" : "en"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 5.svg",
+      "idiom" : "vision",
+      "locale" : "en"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FR_RGB_wht_100217.svg",
+      "idiom" : "iphone",
+      "locale" : "fr"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FR_RGB_wht_100217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "fr"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_FR_RGB_wht_100217.svg",
+      "idiom" : "mac",
+      "locale" : "fr"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FR_RGB_wht_100217 2.svg",
+      "idiom" : "vision",
+      "locale" : "fr"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_ID_RGB_wht_100317 2.svg",
+      "idiom" : "iphone",
+      "locale" : "id"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_ID_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "id"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_ID_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "id"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_ID_RGB_wht_100317.svg",
+      "idiom" : "vision",
+      "locale" : "id"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_AR_RGB_wht_102417.svg",
+      "idiom" : "iphone",
+      "locale" : "ar"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_AR_RGB_wht_102417 1.svg",
+      "idiom" : "ipad",
+      "locale" : "ar"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_AR_RGB_wht_102417.svg",
+      "idiom" : "mac",
+      "locale" : "ar"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_AR_RGB_wht_102417 2.svg",
+      "idiom" : "vision",
+      "locale" : "ar"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_AZ_RGB_wht_100517 1.svg",
+      "idiom" : "iphone",
+      "locale" : "az"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_AZ_RGB_wht_100517.svg",
+      "idiom" : "ipad",
+      "locale" : "az"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_AZ_RGB_wht_100517.svg",
+      "idiom" : "mac",
+      "locale" : "az"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_AZ_RGB_wht_100517 2.svg",
+      "idiom" : "vision",
+      "locale" : "az"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_BG_RGB_wht_100217 2.svg",
+      "idiom" : "iphone",
+      "locale" : "bg"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_BG_RGB_wht_100217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "bg"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_BG_RGB_wht_100217.svg",
+      "idiom" : "mac",
+      "locale" : "bg"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_BG_RGB_wht_100217.svg",
+      "idiom" : "vision",
+      "locale" : "bg"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_wht_092917.svg",
+      "idiom" : "iphone",
+      "locale" : "zh-CN-"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_wht_092917 1.svg",
+      "idiom" : "ipad",
+      "locale" : "zh-CN-"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_CNSC_RGB_wht_092917.svg",
+      "idiom" : "mac",
+      "locale" : "zh-CN-"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_wht_092917 2.svg",
+      "idiom" : "vision",
+      "locale" : "zh-CN-"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_wht_092917 3.svg",
+      "idiom" : "iphone",
+      "locale" : "zh-CN-sc"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_wht_092917 4.svg",
+      "idiom" : "ipad",
+      "locale" : "zh-CN-sc"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_CNSC_RGB_wht_092917 1.svg",
+      "idiom" : "mac",
+      "locale" : "zh-CN-sc"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_wht_092917 5.svg",
+      "idiom" : "vision",
+      "locale" : "zh-CN-sc"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CZ_RGB_wht_092917.svg",
+      "idiom" : "iphone",
+      "locale" : "cs"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CZ_RGB_wht_092917 1.svg",
+      "idiom" : "ipad",
+      "locale" : "cs"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_CZ_RGB_wht_092917.svg",
+      "idiom" : "mac",
+      "locale" : "cs"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CZ_RGB_wht_092917 2.svg",
+      "idiom" : "vision",
+      "locale" : "cs"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_DE_RGB_wht_092917.svg",
+      "idiom" : "iphone",
+      "locale" : "de"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_DE_RGB_wht_092917 1.svg",
+      "idiom" : "ipad",
+      "locale" : "de"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_DE_RGB_wht_092917.svg",
+      "idiom" : "mac",
+      "locale" : "de"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_DE_RGB_wht_092917 2.svg",
+      "idiom" : "vision",
+      "locale" : "de"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_DK_RGB_wht_100217.svg",
+      "idiom" : "iphone",
+      "locale" : "da"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_DK_RGB_wht_100217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "da"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_DK_RGB_wht_100217.svg",
+      "idiom" : "mac",
+      "locale" : "da"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_DK_RGB_wht_100217 2.svg",
+      "idiom" : "vision",
+      "locale" : "da"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_EE_RGB_wht_00217.svg",
+      "idiom" : "iphone",
+      "locale" : "et"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_EE_RGB_wht_00217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "et"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_EE_RGB_wht_100217.svg",
+      "idiom" : "mac",
+      "locale" : "et"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_EE_RGB_wht_00217 2.svg",
+      "idiom" : "vision",
+      "locale" : "et"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_ES_RGB_wht_100217.svg",
+      "idiom" : "iphone",
+      "locale" : "es"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_ES_RGB_wht_100217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "es"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_ES_RGB_wht_100217.svg",
+      "idiom" : "mac",
+      "locale" : "es"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_ES_RGB_wht_100217 2.svg",
+      "idiom" : "vision",
+      "locale" : "es"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FI_RGB_wht_100217.svg",
+      "idiom" : "iphone",
+      "locale" : "fi"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FI_RGB_wht_100217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "fi"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_FI_RGB_wht_100217.svg",
+      "idiom" : "mac",
+      "locale" : "fi"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FI_RGB_wht_100217 2.svg",
+      "idiom" : "vision",
+      "locale" : "fi"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FRCA_RGB_wht_100217.svg",
+      "idiom" : "iphone",
+      "locale" : "fr-CA"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FRCA_RGB_wht_100217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "fr-CA"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_FRCA_RGB_wht_100217.svg",
+      "idiom" : "mac",
+      "locale" : "fr-CA"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_FRCA_RGB_wht_100217 2.svg",
+      "idiom" : "vision",
+      "locale" : "fr-CA"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_GR_RGB_wht_100217.svg",
+      "idiom" : "iphone",
+      "locale" : "el"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_GR_RGB_wht_100217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "el"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_GR_RGB_wht_100217.svg",
+      "idiom" : "mac",
+      "locale" : "el"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_GR_RGB_wht_100217 2.svg",
+      "idiom" : "vision",
+      "locale" : "el"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNTC_RGB_wht_100217.svg",
+      "idiom" : "iphone",
+      "locale" : "zh-Hant-HK"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNTC_RGB_wht_100217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "zh-Hant-HK"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_CNTC_RGB_wht_100217.svg",
+      "idiom" : "mac",
+      "locale" : "zh-Hant-HK"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNTC_RGB_wht_100217 2.svg",
+      "idiom" : "vision",
+      "locale" : "zh-Hant-HK"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNTC_RGB_wht_100217 3.svg",
+      "idiom" : "iphone",
+      "locale" : "zh-Hant-TW"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNTC_RGB_wht_100217 4.svg",
+      "idiom" : "ipad",
+      "locale" : "zh-Hant-TW"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_CNTC_RGB_wht_100217 1.svg",
+      "idiom" : "mac",
+      "locale" : "zh-Hant-TW"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNTC_RGB_wht_100217 5.svg",
+      "idiom" : "vision",
+      "locale" : "zh-Hant-TW"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_IL_RGB_wht_102517.svg",
+      "idiom" : "iphone",
+      "locale" : "he"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_IL_RGB_wht_102517 1.svg",
+      "idiom" : "ipad",
+      "locale" : "he"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_IL_RGB_wht_102517.svg",
+      "idiom" : "mac",
+      "locale" : "he"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_IL_RGB_wht_102517 2.svg",
+      "idiom" : "vision",
+      "locale" : "he"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_IT_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "it"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_IT_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "it"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_IT_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "it"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_IT_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "it"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_KR_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "ko"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_KR_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "ko"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_KR_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "ko"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_KR_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "ko"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_LT_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "lt"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_LT_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "lt"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_LT_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "lt"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_LT_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "lt"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_LV_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "lv"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_LV_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "lv"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_LV_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "lv"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_LV_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "lv"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_MT_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "mt"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_MT_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "mt"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_MT_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "mt"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_MT_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "mt"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_MY_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "ms"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_MY_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "ms"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_MY_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "ms"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_MY_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "ms"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_NL_RGB_wht_101217.svg",
+      "idiom" : "iphone",
+      "locale" : "nl"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_NL_RGB_wht_101217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "nl"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_NL_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "nl"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_NL_RGB_wht_101217 2.svg",
+      "idiom" : "vision",
+      "locale" : "nl"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_NO_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "nb"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_NO_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "nb"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_NO_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "nb"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_NO_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "nb"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PH_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "fil"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PH_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "fil"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_PH_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "fil"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PH_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "fil"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PL_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "pl"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PL_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "pl"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_PL_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "pl"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PL_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "pl"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PTBR_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "pt-BR"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PTBR_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "pt-BR"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_PTBR_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "pt-BR"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PTBR_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "pt-BR"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PTPT_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "pt-PT"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PTPT_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "pt-PT"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_PTPT_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "pt-PT"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_PTPT_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "pt-PT"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_RO_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "ro"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_RO_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "ro"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_RO_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "ro"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_RO_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "ro"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_RU_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "ru"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_RU_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "ru"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_RU_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "ru"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_RU_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "ru"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_SE_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "sv"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_SE_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "sv"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_SE_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "sv"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_SE_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "sv"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_SK_RGB_wht_100317.svg",
+      "idiom" : "iphone",
+      "locale" : "sk"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_SK_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "sk"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_SK_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "sk"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_SK_RGB_wht_100317 2.svg",
+      "idiom" : "vision",
+      "locale" : "sk"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_TH_RGB_wht_092917.svg",
+      "idiom" : "iphone",
+      "locale" : "th"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_TH_RGB_wht_092917 1.svg",
+      "idiom" : "ipad",
+      "locale" : "th"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_TH_RGB_wht_092917.svg",
+      "idiom" : "mac",
+      "locale" : "th"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_TH_RGB_wht_092917 2.svg",
+      "idiom" : "vision",
+      "locale" : "th"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_TR_wht_RGB_100217.svg",
+      "idiom" : "iphone",
+      "locale" : "tr"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_TR_wht_RGB_100217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "tr"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_TR_RGB_wht_100217.svg",
+      "idiom" : "mac",
+      "locale" : "tr"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_TR_wht_RGB_100217 2.svg",
+      "idiom" : "vision",
+      "locale" : "tr"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 6.svg",
+      "idiom" : "iphone",
+      "locale" : "en-GB"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 7.svg",
+      "idiom" : "ipad",
+      "locale" : "en-GB"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_US-UK_RGB_wht_092917 2.svg",
+      "idiom" : "mac",
+      "locale" : "en-GB"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 8.svg",
+      "idiom" : "vision",
+      "locale" : "en-GB"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_VN_RGB_wht_100217.svg",
+      "idiom" : "iphone",
+      "locale" : "vi"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_VN_RGB_wht_100217 1.svg",
+      "idiom" : "ipad",
+      "locale" : "vi"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_VN_RGB_wht_092917.svg",
+      "idiom" : "mac",
+      "locale" : "vi"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_VN_RGB_wht_100217 2.svg",
+      "idiom" : "vision",
+      "locale" : "vi"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

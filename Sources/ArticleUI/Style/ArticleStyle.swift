@@ -38,10 +38,10 @@ public struct ArticleStyleConfiguration {
     /// A type-erased label of an article section.
     struct Label: View {
         init<Content: View>(@ViewBuilder _ content: () -> Content) {
-        body = AnyView(content())
-      }
+            body = AnyView(content())
+        }
 
-      var body: AnyView
+        var body: AnyView
     }
     
     /// A view that describes a View in an Article Section
@@ -101,11 +101,11 @@ extension ArticleStyle where Self == GroupedArticleStyle {
 @available(tvOS 18, *)
 public struct DefaultArticleStyle: ArticleStyle {
     public func makeBody(configuration: Configuration) -> some View {
-   #if os(visionOS)
+#if os(visionOS)
         return GroupedArticleStyle().makeBody(configuration: configuration)
-   #else
+#else
         return PlainArticleStyle().makeBody(configuration: configuration)
-   #endif
+#endif
     }
 }
 
@@ -118,7 +118,14 @@ public struct DefaultArticleStyle: ArticleStyle {
 public struct PlainArticleStyle: ArticleStyle {
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(configuration.containerValues.articleRowInsets ?? EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .padding(
+                configuration.containerValues.articleRowInsets ?? EdgeInsets(
+                    top: 0,
+                    leading: 0,
+                    bottom: 0,
+                    trailing: 0
+                )
+            )
     }
 }
 
@@ -131,15 +138,22 @@ public struct PlainArticleStyle: ArticleStyle {
 public struct GroupedArticleStyle: ArticleStyle {
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(configuration.containerValues.articleRowInsets ?? EdgeInsets(top: 25, leading: 0, bottom: 25, trailing: 0))
+            .padding(
+                configuration.containerValues.articleRowInsets ?? EdgeInsets(
+                    top: 25,
+                    leading: 0,
+                    bottom: 25,
+                    trailing: 0
+                )
+            )
             .padding(.horizontal)
             .background {
-                    RoundedRectangle(cornerRadius: 25)
+                RoundedRectangle(cornerRadius: 25)
 #if os(macOS)
                     .fill(Color.secondary.opacity(0.2))
-                #else
-                        .fill(.regularMaterial)
-                #endif
+#else
+                    .fill(.regularMaterial)
+#endif
             }
     }
 }

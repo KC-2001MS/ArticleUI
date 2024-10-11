@@ -35,12 +35,19 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
         ScrollView {
             VStack(alignment: .leading,spacing: 0) {
                 Group(sections: content) { sections in
-                    ForEach(Array(sections.enumerated()), id: \.element.id) { sectionsIndex, section in
+                    ForEach(
+                        Array(sections.enumerated()),
+                        id: \.element.id
+                    ) {
+ sectionsIndex,
+ section in
                         let sectionValues = section.containerValues
                         VStack(alignment: .leading,spacing: 10) {
                             
                             if !section.header.isEmpty {
-                                SectionHeaderView(tint: sectionValues.articleSectionHeaderTint) {
+                                SectionHeaderView(
+                                    tint: sectionValues.articleSectionHeaderTint
+                                ) {
                                     section.header
                                 }
 #if os(tvOS)
@@ -51,36 +58,53 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
                             
                             style.makeBody(
                                 configuration: .init(
-                                    label: .init({
-                                        VStack(alignment: .leading,spacing: (sectionValues.articleRowSpacing ?? 10) / 2) {
-                                            ForEach(Array(section.content.enumerated()), id: \.element.id) { subviewIndex, subview in
-                                                let rowValues = subview.containerValues
-                                                    subview
-                                                        .tint(rowValues.articleItemTint ?? sectionValues.articleItemTint ?? .accentColor)
-            #if os(tvOS)
-                                                        .focusEffectDisabled()
-                                                        .focusable()
-            #endif
-                                                    if subviewIndex < section.content.count - 1 && (sectionValues.articleRowSeparatorVisibility || rowValues.articleRowSeparatorVisibility) {
-                                                        Divider()
-                                                            .background(rowValues.articleRowSeparatorTint ?? sectionValues.articleRowSeparatorTint ?? .secondary)
-                                                    }
-                                            }
+                                    label: .init(
+{
+    VStack(
+        alignment: .leading,
+        spacing: (sectionValues.articleRowSpacing ?? 10) / 2
+    ) {
+        ForEach(
+            Array(section.content.enumerated()),
+            id: \.element.id
+        ) {
+ subviewIndex,
+ subview in
+            let rowValues = subview.containerValues
+            subview
+                .tint(
+                    rowValues.articleItemTint ?? sectionValues.articleItemTint ?? .accentColor
+                )
+#if os(tvOS)
+                .focusEffectDisabled()
+                .focusable()
+#endif
+            if subviewIndex < section.content.count - 1 && (
+                sectionValues.articleRowSeparatorVisibility || rowValues.articleRowSeparatorVisibility
+            ) {
+                Divider()
+                    .background(
+                        rowValues.articleRowSeparatorTint ?? sectionValues.articleRowSeparatorTint ?? .secondary
+                    )
+            }
+        }
                                             
-                                            //                                if !section.footer.isEmpty {
-                                            //                                    SectionFooterView {
-                                            //                                        section.footer
-                                            //                                    }
-                                            //                                }
-                                        }
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                    }),
+        if !section.footer.isEmpty && sectionValues.articleFooterPlacement == .insideContent {
+            SectionFooterView {
+                section.footer
+            }
+        }
+    }
+    .frame(maxWidth: .infinity, alignment: .leading)
+}),
                                     containerValues: sectionValues
                                 )
                             )
                             
                             
-                            if !section.footer.isEmpty && !sectionValues.stickyFooter {
+                            if !section.footer.isEmpty && (
+                                sectionValues.articleFooterPlacement == .afterContent || sectionValues.articleFooterPlacement == .automatic || !sectionValues.stickyFooter
+                            ) {
                                 SectionFooterView {
                                     section.footer
                                 }
@@ -90,23 +114,40 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
 #endif
                             }
                         }
-                        .padding(.bottom, sectionsIndex < sections.count - 1 ?  (sectionValues.articleSectionSpacing ?? 20) : 0)
+                        .padding(
+                            .bottom,
+                            sectionsIndex < sections.count - 1 ?  (
+                                sectionValues.articleSectionSpacing ?? 20
+                            ) : 0
+                        )
                     }
                     
-                    let filteredSection = sections.filter({ return $0.containerValues.stickyFooter && !($0.footer.isEmpty) })
+                    let filteredSection = sections.filter(
+                        { return ($0.containerValues.articleFooterPlacement == .annotation || $0.containerValues.stickyFooter) && !(
+                            $0.footer.isEmpty
+                        )
+                        })
                     
                     if !filteredSection.isEmpty {
                         VStack(alignment: .leading, spacing: 20) {
                             Divider()
                             
                             VStack(alignment: .leading, spacing: 5) {
-                                ForEach(Array(filteredSection.enumerated()), id: \.element.id) { sectionsIndex, section in
+                                ForEach(
+                                    Array(filteredSection.enumerated()),
+                                    id: \.element.id
+                                ) {
+ sectionsIndex,
+ section in
                                     if !section.footer.isEmpty && section.containerValues.stickyFooter {
                                         HStack(alignment: .top) {
                                             Text("\(sectionsIndex + 1). ")
                                             section.footer
                                         }
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .frame(
+                                            maxWidth: .infinity,
+                                            alignment: .leading
+                                        )
                                         .font(.caption)
                                         .foregroundStyle(Color.secondary)
                                     }

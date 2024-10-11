@@ -21,4 +21,5 @@ extension ContainerValues {
     @Entry var articleRowSpacing: CGFloat?
     @Entry var articleSectionSpacing: CGFloat?
     @Entry var stickyFooter: Bool = false
+    @Entry var articleFooterPlacement: ArticleFooterPlacement = .automatic
 }

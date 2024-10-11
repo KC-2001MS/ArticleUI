@@ -26,12 +26,17 @@ public struct AppDescriptionContent<Content: View>: View {
     
     private var content: Content
     
-    
+    private var downloadLinkStyle: DownloadLinkStyle
+
     /// View to introduce the app
     /// - Parameters:
     ///   - app: Variables with basic information about the app
     ///   - content: View describing the app
-    @available(*, deprecated, message: "use `init(name: LocalizedStringKey, iconName: String, id: String, @ViewBuilder content: () -> Content)`")
+    @available(
+        *,
+         deprecated,
+         message: "use `init(name: LocalizedStringKey, iconName: String, id: String, @ViewBuilder content: () -> Content)`"
+    )
     public init(
         app: AppInfo,
         @ViewBuilder content: () -> Content
@@ -40,6 +45,7 @@ public struct AppDescriptionContent<Content: View>: View {
         self.iconName = app.imageName
         self.id = app.id
         self.content = content()
+        self.downloadLinkStyle = .dark
     }
     
     /// View to introduce the app
@@ -58,6 +64,21 @@ public struct AppDescriptionContent<Content: View>: View {
         self.iconName = iconName
         self.id = id
         self.content = content()
+        self.downloadLinkStyle = .dark
+    }
+    
+    internal init(
+        iconName: String,
+        name: LocalizedStringKey,
+        id: String,
+        content: Content,
+        downloadLinkStyle: DownloadLinkStyle
+    ) {
+        self.name = name
+        self.iconName = iconName
+        self.id = id
+        self.content = content
+        self.downloadLinkStyle = downloadLinkStyle
     }
     
     public var body: some View {
@@ -92,9 +113,14 @@ public struct AppDescriptionContent<Content: View>: View {
                             string: "https://apps.apple.com/app/\(id)"
                         )!
                     ){
-                        Image("Download", bundle: Bundle.module)
+                        Image("DarkDownload", bundle: Bundle.module)
                     }
-                    .accessibilityLabel(Text("Download \(Text(name, bundle: .main))",bundle: .module))
+                    .accessibilityLabel(
+                        Text(
+                            "Download \(Text(name, bundle: .main))",
+                            bundle: .module
+                        )
+                    )
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
@@ -125,19 +151,29 @@ public struct AppDescriptionContent<Content: View>: View {
                         .font(.callout)
                         .foregroundStyle(.secondary)
                     
-                    Link(
-                        destination: URL(
-                            string: "https://apps.apple.com/app/\(id)"
-                        )!
-                    ){
-                        Image("Download", bundle: Bundle.module)
-                    }
-                    .accessibilityLabel(Text("Download \(Text(name, bundle: .main))",bundle: .module))
+                    DownloadLink(
+                        id: id,
+                        name: name,
+                        downloadLinkStyle: downloadLinkStyle
+                    )
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .padding(.vertical, 15)
         }
+    }
+    
+    /// Sets the given style for DownloadLinks within the view hierarchy
+    /// - Parameter style: The style to set.
+    /// - Returns: A view that uses the specified download button style
+    public func downloadLinkStyle(_ style: DownloadLinkStyle) -> some View {
+        Self.init(
+            iconName: iconName,
+            name: name,
+            id: id,
+            content: content,
+            downloadLinkStyle: style
+        )
     }
 }
 

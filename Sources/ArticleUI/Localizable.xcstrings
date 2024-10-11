@@ -4,6 +4,9 @@
     "%lld. " : {
       "shouldTranslate" : false
     },
+    "Download" : {
+
+    },
     "Download %@" : {
       "extractionState" : "manual",
       "localizations" : {
