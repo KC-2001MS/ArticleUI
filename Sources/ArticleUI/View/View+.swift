@@ -81,6 +81,9 @@ public extension View {
         containerValue(\.articleFooterPlacement, placement)
     }
     
+    /// Specify section roles
+    /// - Parameter style: Section Roles
+    /// - Returns: View of the adapted result
     func articleSectionType(style: SectionType) -> some View {
         containerValue(\.articleSectionType, style)
     }

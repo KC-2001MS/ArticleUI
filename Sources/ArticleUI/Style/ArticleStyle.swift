@@ -50,6 +50,7 @@ public struct ArticleStyleConfiguration {
     /// ContainerValues in an Article Section
     let containerValues:  ContainerValues
     
+    /// Is the content empty in the Footer
     let footerIsEmpty: Bool
 }
 
