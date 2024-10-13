@@ -8,6 +8,11 @@
 import SwiftUI
 
 /// A button that takes the user to a specific app page in the App Store.
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS, unavailable)
+@available(tvOS, unavailable)
 public struct DownloadLink: View {
     @Environment(\.colorScheme) private var colorScheme
     
@@ -75,7 +80,7 @@ public struct DownloadLink: View {
         Self.init(id: id, name: name, downloadLinkStyle: style)
     }
 }
-
+#if !os(watchOS) && !os(tvOS)
 #Preview("Light Mode") {
     DownloadLink(id: "id6477782786")
         .environment(\.colorScheme, .light)
@@ -85,4 +90,4 @@ public struct DownloadLink: View {
     DownloadLink(id: "id6477782786")
         .environment(\.colorScheme, .dark)
 }
-
+#endif

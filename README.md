@@ -52,6 +52,7 @@ struct ContentView: View {
                         .font(.largeTitle)
                         .foregroundStyle(Color.primary)
                 }
+                .articleSectionType(style: .title)
                 
                 Section {
                     Text(

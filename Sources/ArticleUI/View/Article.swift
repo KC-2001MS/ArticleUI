@@ -45,9 +45,7 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
                         VStack(alignment: .leading,spacing: 10) {
                             
                             if !section.header.isEmpty {
-                                SectionHeaderView(
-                                    tint: sectionValues.articleSectionHeaderTint
-                                ) {
+                                SectionHeaderView{
                                     section.header
                                 }
 #if os(tvOS)
@@ -89,23 +87,29 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
             }
         }
                                             
-        if !section.footer.isEmpty && sectionValues.articleFooterPlacement == .insideContent {
-            SectionFooterView {
+        if !section.footer.isEmpty && sectionValues.articleFooterPlacement == .insideContent && !sectionValues.stickyFooter {
+            SectionFooterView(
+                containerValues: sectionValues
+            ) {
                 section.footer
             }
         }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
-}),
-                                    containerValues: sectionValues
+}
+                                    ),
+                                    containerValues: sectionValues,
+                                    footerIsEmpty: section.footer.isEmpty
                                 )
                             )
                             
                             
                             if !section.footer.isEmpty && (
-                                sectionValues.articleFooterPlacement == .afterContent || sectionValues.articleFooterPlacement == .automatic || !sectionValues.stickyFooter
-                            ) {
-                                SectionFooterView {
+                                sectionValues.articleFooterPlacement == .afterContent || sectionValues.articleFooterPlacement == .automatic) && !sectionValues.stickyFooter
+                             {
+                                SectionFooterView(
+                                    containerValues: sectionValues
+                                ) {
                                     section.footer
                                 }
 #if os(tvOS)
@@ -244,12 +248,14 @@ extension Article {
             } footer: {
                 Text(String(repeating: "Footer 2 ", count: 10))
             }
+            .articleFooterPlacement(placement: .insideContent)
             .articleRowSpacing(30)
             
             Section("Header 3") {
                 Text(String(repeating: "Content 3 ", count: 30))
             }
         }
+        .articleStyle(.grouped)
         .navigationTitle("Static Content")
     }
 }

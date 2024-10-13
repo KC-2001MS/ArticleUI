@@ -14,15 +14,15 @@ import SwiftUI
 @available(watchOS 11, *)
 @available(tvOS 18, *)
 internal struct SectionHeaderView<Content: View>: View {
-    private var tint: Color?
+    let containerValues: ContainerValues?
     
     @ViewBuilder private var content: Content
     
     internal init(
-        tint: Color? = nil,
+        containerValues: ContainerValues? = nil,
         @ViewBuilder content: () -> Content
     ) {
-        self.tint = tint
+        self.containerValues = containerValues
         self.content = content()
     }
     
@@ -37,7 +37,7 @@ internal struct SectionHeaderView<Content: View>: View {
 #endif
         .bold()
 #if !os(visionOS)
-        .foregroundStyle(tint ?? Color.accentColor)
+        .foregroundStyle(containerValues?.articleSectionHeaderTint ?? Color.accentColor)
 #endif
         .accessibilityAddTraits(.isHeader)
     }
@@ -50,9 +50,15 @@ internal struct SectionHeaderView<Content: View>: View {
 @available(watchOS 11, *)
 @available(tvOS 18, *)
 internal struct SectionFooterView<Content: View>: View {
+    let containerValues: ContainerValues?
+    
     @ViewBuilder private  var content: Content
     
-    internal init(@ViewBuilder _ content: () -> Content) {
+    internal init(
+        containerValues: ContainerValues? = nil,
+        @ViewBuilder _ content: () -> Content
+    ) {
+        self.containerValues = containerValues
         self.content = content()
     }
     
@@ -62,7 +68,7 @@ internal struct SectionFooterView<Content: View>: View {
         }
         .font(.caption2)
         .foregroundStyle(Color.secondary)
-        .frame(maxWidth: .infinity, alignment: .trailing)
+        .frame(maxWidth: .infinity, alignment: containerValues?.articleSectionType == .default ? .trailing : .leading)
     }
 }
 

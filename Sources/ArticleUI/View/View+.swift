@@ -80,4 +80,8 @@ public extension View {
     func articleFooterPlacement(placement: ArticleFooterPlacement) -> some View {
         containerValue(\.articleFooterPlacement, placement)
     }
+    
+    func articleSectionType(style: SectionType) -> some View {
+        containerValue(\.articleSectionType, style)
+    }
 }

@@ -16,15 +16,21 @@ struct ContentView: View {
                 Section {
                     Text("Create easily organized article UI")
                         .foregroundStyle(.gray)
+                        
                     Text(
                         "Welcome to ArtcleUI. This package allows you to easily create views consisting of multiple headings and content like articles."
                     )
                 } header: {
                     Text("What is ArticleUI")
                         .bold()
+#if !os(watchOS) && !os(tvOS)
                         .font(.largeTitle)
+#else
+                        .font(.title3)
+#endif
                         .foregroundStyle(Color.primary)
                 }
+                .articleSectionType(style: .title)
                 
                 Section {
                     Text(

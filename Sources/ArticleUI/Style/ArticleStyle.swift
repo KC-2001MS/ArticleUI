@@ -49,6 +49,8 @@ public struct ArticleStyleConfiguration {
     
     /// ContainerValues in an Article Section
     let containerValues:  ContainerValues
+    
+    let footerIsEmpty: Bool
 }
 
 @available(iOS 18, *)
@@ -140,20 +142,25 @@ public struct GroupedArticleStyle: ArticleStyle {
         configuration.label
             .padding(
                 configuration.containerValues.articleRowInsets ?? EdgeInsets(
-                    top: 25,
+                    top: configuration.containerValues.articleSectionType == .default ? 25 : 0,
                     leading: 0,
-                    bottom: 25,
+                    bottom: configuration.containerValues.articleSectionType == .default ? 25 : 0,
                     trailing: 0
                 )
             )
-            .padding(.horizontal)
+            .padding(
+                configuration.containerValues.articleSectionType == .default ? .horizontal : .all,
+                configuration.containerValues.articleSectionType == .default ? nil : 0
+            )
             .background {
-                RoundedRectangle(cornerRadius: 25)
+                if configuration.containerValues.articleSectionType == .default {
+                    RoundedRectangle(cornerRadius: 25)
 #if os(macOS)
-                    .fill(Color.secondary.opacity(0.2))
+                        .fill(Color.secondary.opacity(0.2))
 #else
-                    .fill(.regularMaterial)
+                        .fill(.regularMaterial)
 #endif
+                }
             }
     }
 }
