@@ -1,16 +1,20 @@
 {
   "images" : [
     {
-      "filename" : "iOS,iPadOSicon.png",
+      "filename" : "iOS App Icon 2.png",
       "idiom" : "iphone"
     },
     {
-      "filename" : "iOS,iPadOSicon 1.png",
+      "filename" : "iOS App Icon 1.png",
       "idiom" : "ipad"
     },
     {
       "filename" : "macOS512@2x.png",
       "idiom" : "mac"
+    },
+    {
+      "filename" : "iOS App Icon.png",
+      "idiom" : "vision"
     }
   ],
   "info" : {

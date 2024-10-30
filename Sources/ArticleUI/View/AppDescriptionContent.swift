@@ -45,7 +45,7 @@ public struct AppDescriptionContent<Content: View>: View {
         self.iconName = app.imageName
         self.id = app.id
         self.content = content()
-        self.downloadLinkStyle = .dark
+        self.downloadLinkStyle = .automatic
     }
     
     /// View to introduce the app
@@ -64,7 +64,7 @@ public struct AppDescriptionContent<Content: View>: View {
         self.iconName = iconName
         self.id = id
         self.content = content()
-        self.downloadLinkStyle = .dark
+        self.downloadLinkStyle = .automatic
     }
     
     internal init(
@@ -85,10 +85,26 @@ public struct AppDescriptionContent<Content: View>: View {
         if dynamicTypeSize > .xLarge || horizontalSizeClass == .compact {
             VStack(alignment: .leading, spacing: 10) {
                 HStack(alignment: .center) {
+                    #if os(visionOS)
+                    Image(iconName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100 * 0.903)
+                        .clipShape(Circle())
+                        .padding(.all, 100 * 0.097)
+#elseif os(iOS)
+                    Image(iconName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100 * 0.903)
+                        .clipShape(RoundedRectangle(cornerRadius: 100 * 0.903 * 0.2237))
+                        .padding(.all, 100 * 0.097)
+                    #else
                     Image(iconName)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100)
+                    #endif
                     
                     Spacer()
                     
@@ -108,18 +124,10 @@ public struct AppDescriptionContent<Content: View>: View {
                         .font(.callout)
                         .foregroundStyle(.secondary)
                     
-                    Link(
-                        destination: URL(
-                            string: "https://apps.apple.com/app/\(id)"
-                        )!
-                    ){
-                        Image("DarkDownload", bundle: Bundle.module)
-                    }
-                    .accessibilityLabel(
-                        Text(
-                            "Download \(Text(name, bundle: .main))",
-                            bundle: .module
-                        )
+                    DownloadLink(
+                        id: id,
+                        name: name,
+                        downloadLinkStyle: downloadLinkStyle
                     )
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
@@ -127,11 +135,30 @@ public struct AppDescriptionContent<Content: View>: View {
         } else {
             HStack(alignment: .bottom, spacing: 10) {
                 VStack(alignment: .center) {
+#if os(visionOS)
                     Image(iconName)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 100)
-                        .padding(.vertical, 10)
+                        .frame(width: 100 * 0.903)
+                        .clipShape(Circle())
+                        .padding(.horizontal, 100 * 0.097)
+                        .padding(.vertical, (100 * 0.097) + 10)
+#elseif os(iOS)
+                    Image(iconName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100 * 0.903)
+                        .clipShape(RoundedRectangle(cornerRadius: 100 * 0.903 * 0.2237))
+                        .padding(.horizontal, 100 * 0.097)
+                        .padding(.vertical, (100 * 0.097) + 10)
+#else
+                    Image(iconName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100 * 0.903)
+                        .padding(.horizontal, 100 * 0.097)
+                        .padding(.vertical, (100 * 0.097) + 10)
+#endif
                     
                     Text(name, bundle: .main)
                         .font(.custom("", size: 13, relativeTo: .largeTitle))
