@@ -5,11 +5,71 @@
       "idiom" : "iphone"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "iOS App Icon 6.png",
+      "idiom" : "iphone"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "iOS App Icon 3.png",
+      "idiom" : "iphone"
+    },
+    {
       "filename" : "iOS App Icon 1.png",
       "idiom" : "ipad"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "iOS App Icon 5.png",
+      "idiom" : "ipad"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "iOS App Icon 4.png",
+      "idiom" : "ipad"
+    },
+    {
       "filename" : "macOS512@2x.png",
+      "idiom" : "mac"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "macOS512@2x 2.png",
+      "idiom" : "mac"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "macOS512@2x 1.png",
       "idiom" : "mac"
     },
     {

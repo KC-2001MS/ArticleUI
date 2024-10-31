@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		F77C47F82CABC0B60023E0C7 /* ArticleUI in Frameworks */ = {isa = PBXBuildFile; productRef = F77C47F72CABC0B60023E0C7 /* ArticleUI */; };
+		F7C795392CD3E17200951E59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C795352CD3E17200951E59 /* ContentView.swift */; };
+		F7C7953A2CD3E17200951E59 /* SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C795372CD3E17200951E59 /* SampleApp.swift */; };
+		F7C7953B2CD3E17200951E59 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C795322CD3E17200951E59 /* Preview Assets.xcassets */; };
+		F7C7953C2CD3E17200951E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C795342CD3E17200951E59 /* Assets.xcassets */; };
+		F7C7953D2CD3E17200951E59 /* SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C795372CD3E17200951E59 /* SampleApp.swift */; };
+		F7C7953E2CD3E17200951E59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C795352CD3E17200951E59 /* ContentView.swift */; };
+		F7C795432CD3E18000951E59 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C7953F2CD3E18000951E59 /* Preview Assets.xcassets */; };
+		F7C795442CD3E18000951E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C795412CD3E18000951E59 /* Assets.xcassets */; };
 		F7F8EC822CABC6F500A5E6BD /* ArticleUI in Frameworks */ = {isa = PBXBuildFile; productRef = F7F8EC812CABC6F500A5E6BD /* ArticleUI */; };
 /* End PBXBuildFile section */
 
@@ -25,36 +33,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F7C795322CD3E17200951E59 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F7C795342CD3E17200951E59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F7C795352CD3E17200951E59 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F7C795362CD3E17200951E59 /* Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sample.entitlements; sourceTree = "<group>"; };
+		F7C795372CD3E17200951E59 /* SampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleApp.swift; sourceTree = "<group>"; };
+		F7C7953F2CD3E18000951E59 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F7C795412CD3E18000951E59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7F0095B2CABBF3D004B0D49 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F8EC702CABC5D000A5E6BD /* Sample Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F7F8EC802CABC6E000A5E6BD /* Exceptions for "Sample" folder in "Sample Watch App" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				ContentView.swift,
-				SampleApp.swift,
-			);
-			target = F7F8EC6F2CABC5D000A5E6BD /* Sample Watch App */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		F7F0095D2CABBF3D004B0D49 /* Sample */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F7F8EC802CABC6E000A5E6BD /* Exceptions for "Sample" folder in "Sample Watch App" target */,
-			);
-			path = Sample;
-			sourceTree = "<group>";
-		};
-		F7F8EC712CABC5D000A5E6BD /* Sample Watch App */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Sample Watch App";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F7F009582CABBF3D004B0D49 /* Frameworks */ = {
@@ -83,11 +71,48 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F7C795332CD3E17200951E59 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F7C795322CD3E17200951E59 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F7C795382CD3E17200951E59 /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				F7C795332CD3E17200951E59 /* Preview Content */,
+				F7C795342CD3E17200951E59 /* Assets.xcassets */,
+				F7C795352CD3E17200951E59 /* ContentView.swift */,
+				F7C795362CD3E17200951E59 /* Sample.entitlements */,
+				F7C795372CD3E17200951E59 /* SampleApp.swift */,
+			);
+			path = Sample;
+			sourceTree = "<group>";
+		};
+		F7C795402CD3E18000951E59 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F7C7953F2CD3E18000951E59 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F7C795422CD3E18000951E59 /* Sample Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				F7C795402CD3E18000951E59 /* Preview Content */,
+				F7C795412CD3E18000951E59 /* Assets.xcassets */,
+			);
+			path = "Sample Watch App";
+			sourceTree = "<group>";
+		};
 		F7F009522CABBF3D004B0D49 = {
 			isa = PBXGroup;
 			children = (
-				F7F0095D2CABBF3D004B0D49 /* Sample */,
-				F7F8EC712CABC5D000A5E6BD /* Sample Watch App */,
+				F7C795382CD3E17200951E59 /* Sample */,
+				F7C795422CD3E18000951E59 /* Sample Watch App */,
 				F77C47F62CABC0B60023E0C7 /* Frameworks */,
 				F7F0095C2CABBF3D004B0D49 /* Products */,
 			);
@@ -118,9 +143,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				F7F0095D2CABBF3D004B0D49 /* Sample */,
-			);
 			name = Sample;
 			packageProductDependencies = (
 				F77C47F72CABC0B60023E0C7 /* ArticleUI */,
@@ -140,9 +162,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				F7F8EC712CABC5D000A5E6BD /* Sample Watch App */,
 			);
 			name = "Sample Watch App";
 			packageProductDependencies = (
@@ -195,6 +214,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7C7953B2CD3E17200951E59 /* Preview Assets.xcassets in Resources */,
+				F7C7953C2CD3E17200951E59 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +223,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7C795432CD3E18000951E59 /* Preview Assets.xcassets in Resources */,
+				F7C795442CD3E18000951E59 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7C795392CD3E17200951E59 /* ContentView.swift in Sources */,
+				F7C7953A2CD3E17200951E59 /* SampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +244,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7C7953D2CD3E17200951E59 /* SampleApp.swift in Sources */,
+				F7C7953E2CD3E17200951E59 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

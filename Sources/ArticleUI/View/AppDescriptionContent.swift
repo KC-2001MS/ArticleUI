@@ -27,6 +27,11 @@ public struct AppDescriptionContent<Content: View>: View {
     private var content: Content
     
     private var downloadLinkStyle: DownloadLinkStyle
+    
+    let gradient = Gradient(stops: [
+        .init(color: Color(red: 48 / 255, green: 48 / 255, blue: 48 / 255), location: 0.0),
+        .init(color: Color(red: 21 / 255, green: 21 / 255, blue: 21 / 255), location: 1.0)
+    ])
 
     /// View to introduce the app
     /// - Parameters:
@@ -85,7 +90,7 @@ public struct AppDescriptionContent<Content: View>: View {
         if dynamicTypeSize > .xLarge || horizontalSizeClass == .compact {
             VStack(alignment: .leading, spacing: 10) {
                 HStack(alignment: .center) {
-                    #if os(visionOS)
+#if os(visionOS)
                     Image(iconName)
                         .resizable()
                         .scaledToFit()
@@ -97,14 +102,19 @@ public struct AppDescriptionContent<Content: View>: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100 * 0.903)
-                        .clipShape(RoundedRectangle(cornerRadius: 100 * 0.903 * 0.2237))
+                        .background {
+                            LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom)
+                        }
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 100 * 0.903 * 0.2237)
+                        )
                         .padding(.all, 100 * 0.097)
-                    #else
+#else
                     Image(iconName)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100)
-                    #endif
+#endif
                     
                     Spacer()
                     
@@ -148,7 +158,12 @@ public struct AppDescriptionContent<Content: View>: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100 * 0.903)
-                        .clipShape(RoundedRectangle(cornerRadius: 100 * 0.903 * 0.2237))
+                        .background {
+                            LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom)
+                        }
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 100 * 0.903 * 0.2237)
+                        )
                         .padding(.horizontal, 100 * 0.097)
                         .padding(.vertical, (100 * 0.097) + 10)
 #else
