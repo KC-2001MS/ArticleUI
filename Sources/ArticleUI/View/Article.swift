@@ -3,6 +3,75 @@
 
 import SwiftUI
 
+/// An annotation item for use with ``Article``.
+///
+/// ```swift
+/// enum NoteID { case layout, watchOS }
+///
+/// Article {
+///     Text(AttributedString(localized:
+///         "See [here](\(URL(articleAnnotation: NoteID.layout))) for details."))
+/// } annotation: {
+///     AnnotationItem(NoteID.layout, "Layout is automatic.")
+///     AnnotationItem(NoteID.watchOS, "Requires watchOS 11.")
+/// }
+/// ```
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS 11, *)
+@available(tvOS 18, *)
+public struct AnnotationItem: Identifiable {
+    public let id: AnyHashable
+    let content: Text
+
+    /// Creates an annotation item with a unique ID and a localized string.
+    ///
+    /// `String.LocalizationValue` conforms to `ExpressibleByStringLiteral`,
+    /// so you can pass a string literal directly and it will be localized.
+    public init<ID: Hashable>(_ id: ID, _ label: String.LocalizationValue) {
+        self.id = AnyHashable(id)
+        self.content = Text(AttributedString(localized: label))
+    }
+
+    /// Creates an annotation item with a unique ID and a custom `AttributedString`.
+    public init<ID: Hashable>(_ id: ID, attributedString label: AttributedString) {
+        self.id = AnyHashable(id)
+        self.content = Text(label)
+    }
+}
+
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS 11, *)
+@available(tvOS 18, *)
+public extension URL {
+    /// Creates a URL that links to an annotation item in an ``Article``.
+    ///
+    /// Use this in an `AttributedString` to create inline annotation links:
+    /// ```swift
+    /// var attr = AttributedString(localized: "See [here](\(URL(articleAnnotation: NoteID.layout))) for details.")
+    /// Text(attr)
+    /// ```
+    init<ID: Hashable>(articleAnnotation id: ID) {
+        self = URL(string: "articleui-annotation://\(id)")!
+    }
+}
+
+/// A result builder that constructs a list of ``AnnotationItem`` values.
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS 11, *)
+@available(tvOS 18, *)
+@resultBuilder
+public struct ArticleAnnotationBuilder {
+    public static func buildBlock(_ components: AnnotationItem...) -> [AnnotationItem] {
+        components
+    }
+}
+
 /// Container that displays headings and content as if it were an article
 @available(iOS 18, *)
 @available(macOS 15, *)
@@ -12,7 +81,9 @@ import SwiftUI
 public struct Article<Content: View, Style: ArticleStyle>: View {
     var style: Style
     @ViewBuilder var content: Content
-    
+    private var annotations: AnyView?
+    private var annotationIDs: [String] = []
+
     /// Creates an article with the given content.
     /// - Parameter content: The content of the article
     public init(
@@ -20,34 +91,84 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
     ) where Style == DefaultArticleStyle {
         self.style = DefaultArticleStyle()
         self.content = content()
+        self.annotations = nil
     }
-    
+
+    /// Creates an article with the given content and annotations displayed at the bottom.
+    @available(*, deprecated, message: "Use init(annotation:content:) instead")
+    public init<Annotations: View>(
+        @ViewBuilder content: () -> Content,
+        @ViewBuilder annotations: () -> Annotations
+    ) where Style == DefaultArticleStyle {
+        self.style = DefaultArticleStyle()
+        self.content = content()
+        self.annotations = AnyView(annotations())
+    }
+
+    /// Creates an article with annotation items displayed at the bottom.
+    ///
+    /// Use ``URL/init(articleAnnotation:)`` to create inline annotation links in `AttributedString`.
+    ///
+    /// ```swift
+    /// enum NoteID { case layout, watchOS }
+    ///
+    /// Article {
+    ///     Text(AttributedString(localized:
+    ///         "See [here](\(URL(articleAnnotation: NoteID.layout))) for details."))
+    /// } annotation: {
+    ///     AnnotationItem(.layout, "Layout is automatic.")
+    ///     AnnotationItem(.watchOS, "Requires watchOS 11.")
+    /// }
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - content: A view builder for the article content.
+    ///   - annotation: A builder that provides the annotation items.
+    public init(
+        @ViewBuilder content: () -> Content,
+        @ArticleAnnotationBuilder annotation: () -> [AnnotationItem]
+    ) where Style == DefaultArticleStyle {
+        let items = annotation()
+        self.style = DefaultArticleStyle()
+        self.content = content()
+        self.annotations = AnyView(
+            ForEach(items) { item in
+                item.content
+            }
+        )
+        self.annotationIDs = items.map { "\($0.id)" }
+    }
+
     /// Initializer used with the articleStyle modifier
     private init(
         style: Style,
-        @ViewBuilder content: () -> Content
+        content: Content,
+        annotations: AnyView?
     ) {
         self.style = style
-        self.content = content()
+        self.content = content
+        self.annotations = annotations
     }
     
     public var body: some View {
+        ScrollViewReader { proxy in
         ScrollView {
-            VStack(alignment: .leading,spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
                 Group(sections: content) { sections in
                     ForEach(
                         Array(sections.enumerated()),
                         id: \.element.id
                     ) {
- sectionsIndex,
- section in
+                        sectionsIndex,
+                        section in
                         let sectionValues = section.containerValues
-                        VStack(alignment: .leading,spacing: 10) {
-                            
+                        VStack(alignment: .leading, spacing: 0) {
+
                             if !section.header.isEmpty {
                                 SectionHeaderView{
                                     section.header
                                 }
+                                .padding(.bottom, 15)
 #if os(tvOS)
                                 .focusEffectDisabled()
                                 .focusable()
@@ -57,46 +178,56 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
                             style.makeBody(
                                 configuration: .init(
                                     label: .init(
-{
-    VStack(
-        alignment: .leading,
-        spacing: (sectionValues.articleRowSpacing ?? 10) / 2
-    ) {
-        ForEach(
-            Array(section.content.enumerated()),
-            id: \.element.id
-        ) {
- subviewIndex,
- subview in
-            let rowValues = subview.containerValues
-            subview
-                .tint(
-                    rowValues.articleItemTint ?? sectionValues.articleItemTint ?? .accentColor
-                )
+                                        {
+                                            VStack(
+                                                alignment: .leading,
+                                                spacing: (
+                                                    sectionValues.articleRowSpacing ?? 10
+                                                ) / 2
+                                            ) {
+                                                ForEach(
+                                                    Array(
+                                                        section.content
+                                                            .enumerated()
+                                                    ),
+                                                    id: \.element.id
+                                                ) {
+                                                    subviewIndex,
+                                                    subview in
+                                                    let rowValues = subview.containerValues
+                                                    subview
+                                                        .tint(
+                                                            rowValues.articleItemTint ?? sectionValues.articleItemTint ?? .accentColor
+                                                        )
 #if os(tvOS)
-                .focusEffectDisabled()
-                .focusable()
+                                                        .focusEffectDisabled()
+                                                        .focusable()
 #endif
-            if subviewIndex < section.content.count - 1 && (
-                sectionValues.articleRowSeparatorVisibility || rowValues.articleRowSeparatorVisibility
-            ) {
-                Divider()
-                    .background(
-                        rowValues.articleRowSeparatorTint ?? sectionValues.articleRowSeparatorTint ?? .secondary
-                    )
-            }
-        }
+                                                    if subviewIndex < section.content.count - 1 && (
+                                                        sectionValues.articleRowSeparatorVisibility || rowValues.articleRowSeparatorVisibility
+                                                    ) {
+                                                        Divider()
+                                                            .background(
+                                                                rowValues.articleRowSeparatorTint ?? sectionValues.articleRowSeparatorTint ?? .secondary
+                                                            )
+                                                            .accessibilityHidden(true)
+                                                    }
+                                                }
                                             
-        if !section.footer.isEmpty && sectionValues.articleFooterPlacement == .insideContent && !sectionValues.stickyFooter {
-            SectionFooterView(
-                containerValues: sectionValues
-            ) {
-                section.footer
-            }
-        }
-    }
-    .frame(maxWidth: .infinity, alignment: .leading)
-}
+                                                if !section.footer.isEmpty && sectionValues.articleFooterPlacement == .insideContent && !sectionValues.stickyFooter {
+                                                    SectionFooterView(
+                                                        containerValues: sectionValues
+                                                    ) {
+                                                        section.footer
+                                                    }
+                                                    .padding(.top, 15)
+                                                }
+                                            }
+                                            .frame(
+                                                maxWidth: .infinity,
+                                                alignment: .leading
+                                            )
+                                        }
                                     ),
                                     containerValues: sectionValues,
                                     footerIsEmpty: section.footer.isEmpty
@@ -106,18 +237,20 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
                             
                             if !section.footer.isEmpty && (
                                 sectionValues.articleFooterPlacement == .afterContent || sectionValues.articleFooterPlacement == .automatic) && !sectionValues.stickyFooter
-                             {
+                            {
                                 SectionFooterView(
                                     containerValues: sectionValues
                                 ) {
                                     section.footer
                                 }
+                                .padding(.top, 15)
 #if os(tvOS)
                                 .focusEffectDisabled()
                                 .focusable()
 #endif
                             }
                         }
+                        .accessibilityElement(children: .contain)
                         .padding(
                             .bottom,
                             sectionsIndex < sections.count - 1 ?  (
@@ -135,14 +268,15 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
                     if !filteredSection.isEmpty {
                         VStack(alignment: .leading, spacing: 20) {
                             Divider()
-                            
+                                .accessibilityHidden(true)
+
                             VStack(alignment: .leading, spacing: 5) {
                                 ForEach(
                                     Array(filteredSection.enumerated()),
                                     id: \.element.id
                                 ) {
- sectionsIndex,
- section in
+                                    sectionsIndex,
+                                    section in
                                     if !section.footer.isEmpty && section.containerValues.stickyFooter {
                                         HStack(alignment: .top) {
                                             Text("\(sectionsIndex + 1). ")
@@ -154,12 +288,19 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
                                         )
                                         .font(.caption)
                                         .foregroundStyle(Color.secondary)
+                                        .accessibilityElement(children: .combine)
+                                        .accessibilityAddTraits(.isSummaryElement)
+                                        .id("annotation-\(sectionsIndex + 1)")
                                     }
                                 }
                             }
                         }
-                        .padding(.top ,20)
+                        .padding(.top, 20)
                     }
+                }
+
+                if let annotations {
+                    annotationsSection(annotations)
                 }
             }
 #if os(visionOS)
@@ -170,10 +311,47 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
             .padding(20)
 #endif
         }
+        .environment(\.openURL, OpenURLAction { url in
+            if url.scheme == "articleui-annotation",
+               let host = url.host() {
+                withAnimation {
+                    proxy.scrollTo("annotation-\(host)", anchor: .bottom)
+                }
+                return .handled
+            }
+            return .systemAction
+        })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
 #if os(iOS)
         .background(Color(uiColor: .secondarySystemBackground))
 #endif
+        } // ScrollViewReader
+    }
+
+    private func annotationsSection(_ annotationsView: AnyView) -> some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Divider()
+                .accessibilityHidden(true)
+
+            VStack(alignment: .leading, spacing: 5) {
+                Group(subviews: annotationsView) { subviews in
+                    ForEach(Array(subviews.enumerated()), id: \.element.id) { index, subview in
+                        let idString = index < annotationIDs.count ? annotationIDs[index] : "\(index + 1)"
+                        HStack(alignment: .top) {
+                            Text("\(index + 1). ")
+                            subview
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.caption)
+                        .foregroundStyle(Color.secondary)
+                        .accessibilityElement(children: .combine)
+                        .accessibilityAddTraits(.isSummaryElement)
+                        .id("annotation-\(idString)")
+                    }
+                }
+            }
+        }
+        .padding(.top, 20)
     }
 }
 
@@ -225,9 +403,11 @@ extension Article {
     /// - Parameter style: Adapted ArticleStyle
     /// - Returns: View with adapted style
     public func articleStyle<S>(_ style: S) -> some View where S: ArticleStyle {
-        return Article<Content, S>(style: style) {
-            self.content
-        }
+        return Article<Content, S>(
+            style: style,
+            content: self.content,
+            annotations: self.annotations
+        )
     }
 }
 

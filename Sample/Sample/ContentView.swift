@@ -9,50 +9,38 @@
 import SwiftUI
 import ArticleUI
 
+enum NoteID { case layout, watchOS }
+
 struct ContentView: View {
     var body: some View {
         NavigationStack {
             Article {
                 Section {
-                    Text("Create easily organized article UI")
-                        .foregroundStyle(.gray)
-                        
                     Text(
-                        "Welcome to ArtcleUI. This package allows you to easily create views consisting of multiple headings and content like articles."
+                        "Welcome to ArticleUI. This package allows you to easily create views consisting of multiple headings and content like articles."
                     )
                 } header: {
                     Text("What is ArticleUI")
-                        .bold()
-#if !os(watchOS) && !os(tvOS)
-                        .font(.largeTitle)
-#else
-                        .font(.title3)
-#endif
-                        .foregroundStyle(Color.primary)
+                    Text("Create easily organized article UI")
                 }
-                .articleSectionType(style: .title)
-                
+
                 Section {
-                    Text(
-                        "Easily create a scrollable article UI; using Article and Section views, you can easily create views that include headings and content."
-                    )
+                    Text(AttributedString(localized: "Easily create a scrollable article UI[*](\(URL(articleAnnotation: NoteID.layout))); using Article and Section views, you can easily create views that include headings and content."))
                 } header: {
                     Text("Build easily scrollable views")
                 }
-                
+
                 Section {
-                    Text(
-                        "This package supports many iOS as well as macOS, visionOS and watchOS. tvOS is in the process of scrolling adjustment."
-                    )
+                    Text(AttributedString(localized: "This package supports many iOS as well as macOS, visionOS and watchOS[*](\(URL(articleAnnotation: NoteID.watchOS))). tvOS is in the process of scrolling adjustment."))
                 } header: {
                     Text("Support for many platforms")
                 }
-                
+
                 Section {
                     Text(
                         "This package can be found in the repository at the following URL"
                     )
-                    
+
                     Link(
                         "ArticleUI",
                         destination: URL(
@@ -62,7 +50,7 @@ struct ContentView: View {
                 } header: {
                     Text("GitHub")
                 }
-                
+
 #if !os(tvOS) && !os(watchOS)
                 Section {
                     AppDescriptionContent(
@@ -83,7 +71,7 @@ The searched data can be saved in the device and can be viewed offline. You can 
                 }
                 .articleRowSeparator(true)
 #endif
-                
+
                 Section {
                     HStack(alignment: .top) {
                         LabeledContent {
@@ -134,6 +122,9 @@ The searched data can be saved in the device and can be viewed offline. You can 
                         "Information about the author who manages this repository."
                     )
                 }
+            } annotation: {
+                AnnotationItem(NoteID.layout, "Article and Section views automatically handle layout and styling.")
+                AnnotationItem(NoteID.watchOS, "watchOS support requires watchOS 11 or later.")
             }
             .articleStyle(.grouped)
             .navigationTitle("Wellcome to ArticleUI")

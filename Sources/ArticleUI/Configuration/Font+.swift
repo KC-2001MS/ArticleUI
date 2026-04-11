@@ -13,11 +13,14 @@ internal extension Font {
 #if os(macOS)
         let baseFont = NSFont.systemFont(ofSize: 17, weight: .bold)
                 
-                // macOSではダイナミックタイプをシステム自体がサポートしないため、ユーザー設定に基づく
-        let scaledFont = NSFontManager.shared.convert(baseFont, toSize: NSFont.systemFontSize(for: .regular))
+        // macOSではダイナミックタイプをシステム自体がサポートしないため、ユーザー設定に基づく
+        let scaledFont = NSFontManager.shared.convert(
+            baseFont,
+            toSize: NSFont.systemFontSize(for: .regular)
+        )
                 
-                // NSFontをCTFontに変換して返す
-                return Font(scaledFont)
+        // NSFontをCTFontに変換して返す
+        return Font(scaledFont)
 #elseif os(watchOS) || os(tvOS)
         let textStyle = UIFont.TextStyle.title1
         let fontMetrics = UIFontMetrics(forTextStyle: textStyle)

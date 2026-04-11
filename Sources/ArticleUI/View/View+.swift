@@ -84,7 +84,49 @@ public extension View {
     /// Specify section roles
     /// - Parameter style: Section Roles
     /// - Returns: View of the adapted result
+    @available(*, deprecated, message: "articleSectionType is no longer needed")
     func articleSectionType(style: SectionType) -> some View {
         containerValue(\.articleSectionType, style)
+    }
+
+}
+
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS 11, *)
+@available(tvOS 18, *)
+public extension Text {
+    /// Creates a superscript annotation number that can be embedded inline in text.
+    @available(*, deprecated, message: "Use AnnotationProxy.link(for:) instead")
+    static func annotation(_ index: Int) -> Text {
+        var attributed = AttributedString("\(index)")
+        attributed.link = URL(string: "articleui-annotation://\(index)")
+        attributed.font = .caption2
+        attributed.baselineOffset = 6
+        return Text(attributed)
+    }
+}
+
+#Preview("Modifiers", traits: .sizeThatFitsLayout) {
+    Article {
+        Section {
+            Text("Row with custom tint")
+                .articleItemTint(.purple)
+
+            Text("Row with separator")
+                .articleRowSeparator(true)
+                .articleRowSeparatorTint(.red)
+
+            Text("Row with custom spacing")
+        } header: {
+            Text("Modifier Examples")
+        } footer: {
+            Text("This footer is placed inside content.")
+        }
+        .articleRowSpacing(20)
+        .articleSectionSpacing(30)
+        .articleSectionHeaderTint(.orange)
+        .articleFooterPlacement(placement: .insideContent)
     }
 }

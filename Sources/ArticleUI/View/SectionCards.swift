@@ -26,19 +26,40 @@ internal struct SectionHeaderView<Content: View>: View {
         self.content = content()
     }
     
+    private var tintColor: Color {
+        containerValues?.articleSectionHeaderTint ?? Color.accentColor
+    }
+
     var body: some View {
-        VStack(alignment: .leading,spacing: 5) {
-            content
-        }
+        VStack(alignment: .leading, spacing: 3) {
+            Group(subviews: content) { subviews in
+                if let first = subviews.first {
+                    first
 #if !os(watchOS) && !os(tvOS)
-        .font(.title)
+                        .font(.title)
 #else
-        .font(.headline)
+                        .font(.headline)
 #endif
-        .bold()
+                        .bold()
 #if !os(visionOS)
-        .foregroundStyle(containerValues?.articleSectionHeaderTint ?? Color.accentColor)
+                        .foregroundStyle(tintColor)
 #endif
+                }
+
+                ForEach(subviews.dropFirst(1)) { subview in
+                    subview
+#if !os(watchOS) && !os(tvOS)
+                        .font(.subheadline)
+#else
+                        .font(.caption)
+#endif
+#if !os(visionOS)
+                        .foregroundStyle(.secondary)
+#endif
+                }
+            }
+        }
+        .accessibilityElement(children: .combine)
         .accessibilityAddTraits(.isHeader)
     }
 }
@@ -63,18 +84,30 @@ internal struct SectionFooterView<Content: View>: View {
     }
     
     internal var body: some View {
-        VStack(alignment: .trailing,spacing: 5) {
+        VStack(alignment: .trailing, spacing: 3) {
             content
         }
         .font(.caption2)
         .foregroundStyle(Color.secondary)
-        .frame(maxWidth: .infinity, alignment: containerValues?.articleSectionType == .default ? .trailing : .leading)
+        .frame(
+            maxWidth: .infinity,
+            alignment: containerValues?.articleSectionType == .default ? .trailing : .leading
+        )
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isSummaryElement)
     }
 }
 
-#Preview("Header",traits: .sizeThatFitsLayout) {
+#Preview("Header", traits: .sizeThatFitsLayout) {
     SectionHeaderView {
         Text("Header")
+    }
+}
+
+#Preview("Header with Subtitle", traits: .sizeThatFitsLayout) {
+    SectionHeaderView {
+        Text("Main Title")
+        Text("This is a subtitle")
     }
 }
 

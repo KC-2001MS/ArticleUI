@@ -17,26 +17,6 @@
       "idiom" : "vision"
     },
     {
-      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_wht_100317 2.svg",
-      "idiom" : "iphone",
-      "locale" : "ja"
-    },
-    {
-      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_wht_100317 1.svg",
-      "idiom" : "ipad",
-      "locale" : "ja"
-    },
-    {
-      "filename" : "Download_on_the_Mac_App_Store_Badge_JP_RGB_wht_100317.svg",
-      "idiom" : "mac",
-      "locale" : "ja"
-    },
-    {
-      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg",
-      "idiom" : "vision",
-      "locale" : "ja"
-    },
-    {
       "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 3.svg",
       "idiom" : "iphone",
       "locale" : "en"
@@ -55,6 +35,26 @@
       "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 5.svg",
       "idiom" : "vision",
       "locale" : "en"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_wht_100317 2.svg",
+      "idiom" : "iphone",
+      "locale" : "ja"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_wht_100317 1.svg",
+      "idiom" : "ipad",
+      "locale" : "ja"
+    },
+    {
+      "filename" : "Download_on_the_Mac_App_Store_Badge_JP_RGB_wht_100317.svg",
+      "idiom" : "mac",
+      "locale" : "ja"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg",
+      "idiom" : "vision",
+      "locale" : "ja"
     },
     {
       "filename" : "Download_on_the_App_Store_Badge_FR_RGB_wht_100217.svg",

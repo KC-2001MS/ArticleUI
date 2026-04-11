@@ -61,11 +61,7 @@ public struct ArticleStyleConfiguration {
 @available(tvOS 18, *)
 extension ArticleStyle where Self == DefaultArticleStyle {
     /// The default article style, based on the article’s context.
-    public static var automatic: DefaultArticleStyle {
-        get {
-            DefaultArticleStyle()
-        }
-    }
+    public static var automatic: DefaultArticleStyle { DefaultArticleStyle() }
 }
 
 @available(iOS 18, *)
@@ -75,11 +71,7 @@ extension ArticleStyle where Self == DefaultArticleStyle {
 @available(tvOS 18, *)
 extension ArticleStyle where Self == PlainArticleStyle {
     /// A article style that doesn’t style or decorate its content
-    public static var plain: PlainArticleStyle {
-        get {
-            PlainArticleStyle()
-        }
-    }
+    public static var plain: PlainArticleStyle { PlainArticleStyle() }
 }
 
 @available(iOS 18, *)
@@ -89,11 +81,7 @@ extension ArticleStyle where Self == PlainArticleStyle {
 @available(tvOS 18, *)
 extension ArticleStyle where Self == GroupedArticleStyle {
     /// The article style that describes the appearance of a grouped article.
-    public static var grouped: GroupedArticleStyle {
-        get {
-            GroupedArticleStyle()
-        }
-    }
+    public static var grouped: GroupedArticleStyle { GroupedArticleStyle() }
 }
 
 /// The default article style, based on the article’s context.
@@ -140,12 +128,14 @@ public struct PlainArticleStyle: ArticleStyle {
 @available(tvOS 18, *)
 public struct GroupedArticleStyle: ArticleStyle {
     public func makeBody(configuration: Configuration) -> some View {
-        configuration.label
+        let rowSpacing = configuration.containerValues.articleRowSpacing ?? 10
+
+        return configuration.label
             .padding(
                 configuration.containerValues.articleRowInsets ?? EdgeInsets(
-                    top: configuration.containerValues.articleSectionType == .default ? 25 : 0,
+                    top: configuration.containerValues.articleSectionType == .default ? rowSpacing : 0,
                     leading: 0,
-                    bottom: configuration.containerValues.articleSectionType == .default ? 25 : 0,
+                    bottom: configuration.containerValues.articleSectionType == .default ? rowSpacing : 0,
                     trailing: 0
                 )
             )

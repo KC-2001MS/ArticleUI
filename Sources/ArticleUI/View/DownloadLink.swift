@@ -15,11 +15,12 @@ import SwiftUI
 @available(tvOS, unavailable)
 public struct DownloadLink: View {
     @Environment(\.colorScheme) private var colorScheme
-    
+    @ScaledMetric(relativeTo: .body) private var badgeHeight: CGFloat = 40
+
     private var id: String
-    
+
     private var name: LocalizedStringKey
-    
+
     private var downloadLinkStyle: DownloadLinkStyle
     
     /// Launch the App Store and create a link to open the page for the specified App ID.
@@ -53,24 +54,29 @@ public struct DownloadLink: View {
         self.downloadLinkStyle = downloadLinkStyle
     }
     
+    private var badgeImageName: String {
+        if downloadLinkStyle == .light {
+            "Download/LightDownload"
+        } else if downloadLinkStyle == .dark {
+            "Download/DarkDownload"
+        } else {
+            colorScheme == .dark ? "Download/DarkDownload" : "Download/LightDownload"
+        }
+    }
+
     public var body: some View {
         Link(
             destination: URL(
                 string: "https://apps.apple.com/app/\(id)"
             )!
-        ){
-            if downloadLinkStyle == .light {
-                Image("LightDownload", bundle: Bundle.module)
-            } else if downloadLinkStyle == .dark {
-                Image("DarkDownload", bundle: Bundle.module)
-            } else {
-                Image(
-                    colorScheme == .dark ? "DarkDownload" : "LightDownload",
-                    bundle: Bundle.module
-                )
-            }
+        ) {
+            Image(badgeImageName, bundle: Bundle.module)
+                .resizable()
+                .scaledToFit()
+                .frame(height: badgeHeight)
         }
-        .accessibilityLabel(Text(name ,bundle: .module))
+        .accessibilityLabel(Text(name, bundle: .module))
+        .accessibilityAddTraits(.isLink)
     }
     
     /// Sets the given style for DownloadLinks within the view hierarchy
