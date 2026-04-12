@@ -14,7 +14,7 @@ enum NoteID { case layout, watchOS }
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-            Article {
+            Article { ref in
                 Section {
                     Text(
                         "Welcome to ArticleUI. This package allows you to easily create views consisting of multiple headings and content like articles."
@@ -25,13 +25,15 @@ struct ContentView: View {
                 }
 
                 Section {
-                    Text(AttributedString(localized: "Easily create a scrollable article UI[*](\(URL(articleAnnotation: NoteID.layout))); using Article and Section views, you can easily create views that include headings and content."))
+                    let layout = ref(NoteID.layout)
+                    Text(AttributedString(localized: "Easily create a scrollable article UI[\(layout.number.formatted(.superscript))](\(layout.url.absoluteString)); using Article and Section views, you can easily create views that include headings and content."))
                 } header: {
                     Text("Build easily scrollable views")
                 }
 
                 Section {
-                    Text(AttributedString(localized: "This package supports many iOS as well as macOS, visionOS and watchOS[*](\(URL(articleAnnotation: NoteID.watchOS))). tvOS is in the process of scrolling adjustment."))
+                    let watchOS = ref(NoteID.watchOS)
+                    Text(AttributedString(localized: "This package supports many iOS as well as macOS, visionOS and watchOS[\(watchOS.number.formatted(.superscript))](\(watchOS.url.absoluteString)). tvOS is in the process of scrolling adjustment."))
                 } header: {
                     Text("Support for many platforms")
                 }

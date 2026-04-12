@@ -3,6 +3,101 @@
 
 import SwiftUI
 
+/// The format style for an annotation number.
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS 11, *)
+@available(tvOS 18, *)
+public enum AnnotationNumberFormatStyle {
+    /// Standard digits (e.g. `"1"`, `"10"`).
+    case standard
+    /// Superscript digits (e.g. `"¹"`, `"¹⁰"`).
+    case superscript
+}
+
+/// A number associated with an annotation.
+///
+/// ```swift
+/// ref.number.formatted()              // "1"
+/// ref.number.formatted(.superscript)  // "¹"
+/// ```
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS 11, *)
+@available(tvOS 18, *)
+public struct AnnotationNumber: Sendable {
+    let value: Int
+
+    /// Returns the number as a formatted string.
+    /// - Parameter style: The format style. Defaults to `.standard`.
+    public func formatted(_ style: AnnotationNumberFormatStyle = .standard) -> String {
+        switch style {
+        case .standard:
+            return String(value)
+        case .superscript:
+            let table: [Character] = ["⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"]
+            return String(String(value).compactMap { $0.wholeNumberValue.map { table[$0] } })
+        }
+    }
+}
+
+/// A reference to an annotation, providing its number and URL.
+///
+/// Use this inside ``Article``'s content closure to create inline annotation links:
+/// ```swift
+/// Article { annotation in
+///     let ref = annotation(NoteID.layout)
+///     Text(AttributedString(localized:
+///         "See here[\(ref.number.superscript())](\(ref.url.absoluteString)) for details."))
+/// } annotation: {
+///     AnnotationItem(NoteID.layout, "Layout is automatic.")
+/// }
+/// ```
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS 11, *)
+@available(tvOS 18, *)
+public struct AnnotationReference {
+    /// The annotation number.
+    public let number: AnnotationNumber
+
+    /// The URL that links to this annotation item in the article.
+    public let url: URL
+}
+
+/// A lookup that maps annotation IDs to ``AnnotationReference`` values.
+///
+/// Use `callAsFunction` to look up an annotation by its ID:
+/// ```swift
+/// let ref = lookup(NoteID.layout)  // AnnotationReference
+/// ```
+@available(iOS 18, *)
+@available(macOS 15, *)
+@available(visionOS 2, *)
+@available(watchOS 11, *)
+@available(tvOS 18, *)
+public struct AnnotationLookup {
+    private let indexMap: [AnyHashable: Int]
+
+    init(items: [AnnotationItem]) {
+        var map = [AnyHashable: Int]()
+        for (offset, item) in items.enumerated() {
+            map[item.id] = offset + 1
+        }
+        self.indexMap = map
+    }
+
+    /// Returns the ``AnnotationReference`` for the given annotation ID.
+    public func callAsFunction<ID: Hashable>(_ id: ID) -> AnnotationReference {
+        let key = AnyHashable(id)
+        let index = indexMap[key] ?? 0
+        return AnnotationReference(number: AnnotationNumber(value: index), url: URL(string: "articleui-annotation://\(id)")!)
+    }
+}
+
 /// An annotation item for use with ``Article``.
 ///
 /// ```swift
@@ -54,7 +149,7 @@ public extension URL {
     /// var attr = AttributedString(localized: "See [here](\(URL(articleAnnotation: NoteID.layout))) for details.")
     /// Text(attr)
     /// ```
-    init<ID: Hashable>(articleAnnotation id: ID) {
+    init<ID: Hashable>(annotation id: ID) {
         self = URL(string: "articleui-annotation://\(id)")!
     }
 }
@@ -131,6 +226,42 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
         let items = annotation()
         self.style = DefaultArticleStyle()
         self.content = content()
+        self.annotations = AnyView(
+            ForEach(items) { item in
+                item.content
+            }
+        )
+        self.annotationIDs = items.map { "\($0.id)" }
+    }
+
+    /// Creates an article with annotation items, passing an ``AnnotationLookup`` to the content closure.
+    ///
+    /// Use the lookup to obtain superscript numbers and URLs for inline annotation links:
+    /// ```swift
+    /// Article { annotation in
+    ///     Section {
+    ///         let ref = annotation(NoteID.layout)
+    ///         Text(AttributedString(localized:
+    ///             "See here[\(ref.superscriptString)](\(ref.url))."))
+    ///     } header: {
+    ///         Text("Header")
+    ///     }
+    /// } annotation: {
+    ///     AnnotationItem(NoteID.layout, "Layout is automatic.")
+    /// }
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - content: A view builder that receives an ``AnnotationLookup`` for referencing annotations.
+    ///   - annotation: A builder that provides the annotation items.
+    public init(
+        @ViewBuilder content: (AnnotationLookup) -> Content,
+        @ArticleAnnotationBuilder annotation: () -> [AnnotationItem]
+    ) where Style == DefaultArticleStyle {
+        let items = annotation()
+        let lookup = AnnotationLookup(items: items)
+        self.style = DefaultArticleStyle()
+        self.content = content(lookup)
         self.annotations = AnyView(
             ForEach(items) { item in
                 item.content
