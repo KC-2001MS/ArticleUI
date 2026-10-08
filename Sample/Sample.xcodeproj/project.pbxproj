@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F61E1C3730761A9800D63E42 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F61E1C3630761A9800D63E42 /* AppIcon.icon */; };
+		F61E1C3830761A9800D63E42 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F61E1C3630761A9800D63E42 /* AppIcon.icon */; };
 		F77C47F82CABC0B60023E0C7 /* ArticleUI in Frameworks */ = {isa = PBXBuildFile; productRef = F77C47F72CABC0B60023E0C7 /* ArticleUI */; };
 		F7C795392CD3E17200951E59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C795352CD3E17200951E59 /* ContentView.swift */; };
 		F7C7953A2CD3E17200951E59 /* SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C795372CD3E17200951E59 /* SampleApp.swift */; };
@@ -33,6 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F61E1C3630761A9800D63E42 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		F7C795322CD3E17200951E59 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F7C795342CD3E17200951E59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7C795352CD3E17200951E59 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,9 +87,10 @@
 			children = (
 				F7C795332CD3E17200951E59 /* Preview Content */,
 				F7C795342CD3E17200951E59 /* Assets.xcassets */,
-				F7C795352CD3E17200951E59 /* ContentView.swift */,
+				F61E1C3630761A9800D63E42 /* AppIcon.icon */,
 				F7C795362CD3E17200951E59 /* Sample.entitlements */,
 				F7C795372CD3E17200951E59 /* SampleApp.swift */,
+				F7C795352CD3E17200951E59 /* ContentView.swift */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -179,7 +183,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 2710;
 				TargetAttributes = {
 					F7F0095A2CABBF3D004B0D49 = {
 						CreatedOnToolsVersion = 16.0;
@@ -216,6 +220,7 @@
 			files = (
 				F7C7953B2CD3E17200951E59 /* Preview Assets.xcassets in Resources */,
 				F7C7953C2CD3E17200951E59 /* Assets.xcassets in Resources */,
+				F61E1C3830761A9800D63E42 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +230,7 @@
 			files = (
 				F7C795432CD3E18000951E59 /* Preview Assets.xcassets in Resources */,
 				F7C795442CD3E18000951E59 /* Assets.xcassets in Resources */,
+				F61E1C3730761A9800D63E42 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +292,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7AA87AZ875;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -308,6 +316,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -348,7 +357,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7AA87AZ875;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -363,6 +374,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
@@ -376,8 +388,8 @@
 				CODE_SIGN_ENTITLEMENTS = Sample/Sample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample/Preview Content\"";
-				DEVELOPMENT_TEAM = 7AA87AZ875;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -416,8 +428,8 @@
 				CODE_SIGN_ENTITLEMENTS = Sample/Sample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample/Preview Content\"";
-				DEVELOPMENT_TEAM = 7AA87AZ875;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -456,7 +468,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 7AA87AZ875;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Sample;
@@ -486,7 +497,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 7AA87AZ875;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Sample;

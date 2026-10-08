@@ -19,7 +19,8 @@ let package = Package(
         .target(
             name: "ArticleUI",
             resources: [
-                .process("Media.xcassets")
+                .process("Media.xcassets"),
+                .process("Preview Content")
             ]
         ),
         .testTarget(

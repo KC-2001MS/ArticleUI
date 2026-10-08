@@ -87,10 +87,11 @@ struct ContentView: View {
                 
 #if !os(tvOS) && !os(watchOS)
                 Section {
-                    AppDescriptionContent(
-                        iconName: "Japan Corp Info",
+                    AppCard(
                         name: "Japan Corp Info",
-                        id: "id6477782786"
+                        subtitle: "Manage Japan corporation info",
+                        iconName: "Japan Corp Info",
+                        appID: "id6477782786"
                     ) {
                         Text(
                             """

@@ -1,11 +1,20 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    " " : {
+
+    },
     "%lld" : {
 
     },
     "%lld. " : {
       "shouldTranslate" : false
+    },
+    "Close" : {
+
     },
     "Download" : {
 
