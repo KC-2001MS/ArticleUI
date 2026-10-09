@@ -148,6 +148,8 @@ public struct GroupedArticleStyle: ArticleStyle {
                     RoundedRectangle(cornerRadius: 25)
 #if os(macOS)
                         .fill(Color.secondary.opacity(0.2))
+#elseif os(iOS)
+                        .fill(Color(uiColor: .secondarySystemGroupedBackground))
 #else
                         .fill(.regularMaterial)
 #endif

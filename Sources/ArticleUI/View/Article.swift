@@ -454,7 +454,7 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
 #if os(iOS)
-        .background(Color(uiColor: .secondarySystemBackground))
+        .background(Color(uiColor: .systemGroupedBackground))
 #endif
         } // ScrollViewReader
     }

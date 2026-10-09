@@ -151,9 +151,6 @@ public struct AppCard<Content: View>: View {
             ZStack(alignment: .leading) {
                 Button {
                     isDetailPresented = true
-#if os(iOS) || os(visionOS)
-                    isOverlayPresented = true
-#endif
                 } label: {
                     Color.clear
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -318,9 +315,6 @@ public struct AppCard<Content: View>: View {
             ZStack(alignment: .top) {
                 Button {
                     isDetailPresented = true
-#if os(iOS) || os(visionOS)
-                    isOverlayPresented = true
-#endif
                 } label: {
                     Color.clear
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -483,11 +477,7 @@ public struct AppCard<Content: View>: View {
                 }
             }
         }
-        .sheet(isPresented: $isDetailPresented, onDismiss: {
-#if os(iOS) || os(visionOS)
-            isOverlayPresented = false
-#endif
-        }) {
+        .navigationDestination(isPresented: $isDetailPresented) {
             AppDetailView(
                 name: name,
                 subtitle: subtitle,
@@ -498,6 +488,9 @@ public struct AppCard<Content: View>: View {
             )
         }
 #if os(iOS) || os(visionOS)
+        .onChange(of: isDetailPresented) {
+            isOverlayPresented = isDetailPresented
+        }
         .appStoreOverlay(isPresented: $isOverlayPresented) {
             SKOverlay.AppConfiguration(
                 appIdentifier: storeAppIdentifier,
