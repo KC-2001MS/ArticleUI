@@ -1,10 +1,9 @@
 //
 //  SampleApp.swift
 //  Sample
-//  
+//
 //  Created by Keisuke Chinone on 2024/10/01.
 //
-
 
 import SwiftUI
 

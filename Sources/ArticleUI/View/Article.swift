@@ -94,7 +94,9 @@ public struct AnnotationLookup {
     public func callAsFunction<ID: Hashable>(_ id: ID) -> AnnotationReference {
         let key = AnyHashable(id)
         let index = indexMap[key] ?? 0
-        return AnnotationReference(number: AnnotationNumber(value: index), url: URL(string: "articleui-annotation://\(id)")!)
+        return AnnotationReference(
+            number: AnnotationNumber(value: index),
+            url: URL(string: "articleui-annotation://\(id)")!)
     }
 }
 
@@ -141,7 +143,7 @@ public struct AnnotationItem: Identifiable {
 @available(visionOS 2, *)
 @available(watchOS 11, *)
 @available(tvOS 18, *)
-public extension URL {
+extension URL {
     /// Creates a URL that links to an annotation item in an ``Article``.
     ///
     /// Use this in an `AttributedString` to create inline annotation links:
@@ -149,7 +151,7 @@ public extension URL {
     /// var attr = AttributedString(localized: "See [here](\(URL(articleAnnotation: NoteID.layout))) for details.")
     /// Text(attr)
     /// ```
-    init<ID: Hashable>(annotation id: ID) {
+    public init<ID: Hashable>(annotation id: ID) {
         self = URL(string: "articleui-annotation://\(id)")!
     }
 }
@@ -280,183 +282,202 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
         self.content = content
         self.annotations = annotations
     }
-    
+
     public var body: some View {
         ScrollViewReader { proxy in
-        ScrollView {
-            VStack(alignment: .leading, spacing: 0) {
-                Group(sections: content) { sections in
-                    ForEach(
-                        Array(sections.enumerated()),
-                        id: \.element.id
-                    ) {
-                        sectionsIndex,
-                        section in
-                        let sectionValues = section.containerValues
-                        VStack(alignment: .leading, spacing: 0) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    Group(sections: content) { sections in
+                        ForEach(
+                            Array(sections.enumerated()),
+                            id: \.element.id
+                        ) {
+                            sectionsIndex,
+                            section in
+                            let sectionValues = section.containerValues
+                            VStack(alignment: .leading, spacing: 0) {
 
-                            if !section.header.isEmpty {
-                                SectionHeaderView{
-                                    section.header
+                                if !section.header.isEmpty {
+                                    SectionHeaderView {
+                                        section.header
+                                    }
+                                    .padding(.bottom, 15)
+                                    #if os(tvOS)
+                                        .focusEffectDisabled()
+                                        .focusable()
+                                    #endif
                                 }
-                                .padding(.bottom, 15)
-#if os(tvOS)
-                                .focusEffectDisabled()
-                                .focusable()
-#endif
-                            }
-                            
-                            style.makeBody(
-                                configuration: .init(
-                                    label: .init(
-                                        {
-                                            VStack(
-                                                alignment: .leading,
-                                                spacing: (
-                                                    sectionValues.articleRowSpacing ?? 10
-                                                ) / 2
-                                            ) {
-                                                ForEach(
-                                                    Array(
-                                                        section.content
-                                                            .enumerated()
-                                                    ),
-                                                    id: \.element.id
+
+                                style.makeBody(
+                                    configuration: .init(
+                                        label: .init(
+                                            {
+                                                VStack(
+                                                    alignment: .leading,
+                                                    spacing: (sectionValues.articleRowSpacing ?? 10)
+                                                        / 2
                                                 ) {
-                                                    subviewIndex,
-                                                    subview in
-                                                    let rowValues = subview.containerValues
-                                                    subview
-                                                        .tint(
-                                                            rowValues.articleItemTint ?? sectionValues.articleItemTint ?? .accentColor
-                                                        )
-#if os(tvOS)
-                                                        .focusEffectDisabled()
-                                                        .focusable()
-#endif
-                                                    if subviewIndex < section.content.count - 1 && (
-                                                        sectionValues.articleRowSeparatorVisibility || rowValues.articleRowSeparatorVisibility
+                                                    ForEach(
+                                                        Array(
+                                                            section.content
+                                                                .enumerated()
+                                                        ),
+                                                        id: \.element.id
                                                     ) {
-                                                        Divider()
-                                                            .background(
-                                                                rowValues.articleRowSeparatorTint ?? sectionValues.articleRowSeparatorTint ?? .secondary
+                                                        subviewIndex,
+                                                        subview in
+                                                        let rowValues = subview.containerValues
+                                                        subview
+                                                            .tint(
+                                                                rowValues.articleItemTint
+                                                                    ?? sectionValues.articleItemTint
+                                                                    ?? .accentColor
                                                             )
-                                                            .accessibilityHidden(true)
+                                                            #if os(tvOS)
+                                                                .focusEffectDisabled()
+                                                                .focusable()
+                                                            #endif
+                                                        if subviewIndex < section.content.count - 1
+                                                            && (sectionValues
+                                                                .articleRowSeparatorVisibility
+                                                                || rowValues
+                                                                    .articleRowSeparatorVisibility)
+                                                        {
+                                                            Divider()
+                                                                .background(
+                                                                    rowValues
+                                                                        .articleRowSeparatorTint
+                                                                        ?? sectionValues
+                                                                        .articleRowSeparatorTint
+                                                                        ?? .secondary
+                                                                )
+                                                                .accessibilityHidden(true)
+                                                        }
+                                                    }
+
+                                                    if !section.footer.isEmpty
+                                                        && sectionValues.articleFooterPlacement
+                                                            == .insideContent
+                                                        && !sectionValues.stickyFooter
+                                                    {
+                                                        SectionFooterView(
+                                                            containerValues: sectionValues
+                                                        ) {
+                                                            section.footer
+                                                        }
+                                                        .padding(.top, 15)
                                                     }
                                                 }
-                                            
-                                                if !section.footer.isEmpty && sectionValues.articleFooterPlacement == .insideContent && !sectionValues.stickyFooter {
-                                                    SectionFooterView(
-                                                        containerValues: sectionValues
-                                                    ) {
-                                                        section.footer
-                                                    }
-                                                    .padding(.top, 15)
-                                                }
+                                                .frame(
+                                                    maxWidth: .infinity,
+                                                    alignment: .leading
+                                                )
+                                            }
+                                        ),
+                                        containerValues: sectionValues,
+                                        footerIsEmpty: section.footer.isEmpty
+                                    )
+                                )
+
+                                if !section.footer.isEmpty
+                                    && (sectionValues.articleFooterPlacement == .afterContent
+                                        || sectionValues.articleFooterPlacement == .automatic)
+                                    && !sectionValues.stickyFooter
+                                {
+                                    SectionFooterView(
+                                        containerValues: sectionValues
+                                    ) {
+                                        section.footer
+                                    }
+                                    .padding(.top, 15)
+                                    #if os(tvOS)
+                                        .focusEffectDisabled()
+                                        .focusable()
+                                    #endif
+                                }
+                            }
+                            .accessibilityElement(children: .contain)
+                            .padding(
+                                .bottom,
+                                sectionsIndex < sections.count - 1
+                                    ? (sectionValues.articleSectionSpacing ?? 20) : 0
+                            )
+                        }
+
+                        let filteredSection = sections.filter(
+                            {
+                                return
+                                    ($0.containerValues.articleFooterPlacement == .annotation
+                                    || $0.containerValues.stickyFooter) && !($0.footer.isEmpty)
+                            })
+
+                        if !filteredSection.isEmpty {
+                            VStack(alignment: .leading, spacing: 20) {
+                                Divider()
+                                    .accessibilityHidden(true)
+
+                                VStack(alignment: .leading, spacing: 5) {
+                                    ForEach(
+                                        Array(filteredSection.enumerated()),
+                                        id: \.element.id
+                                    ) {
+                                        sectionsIndex,
+                                        section in
+                                        if !section.footer.isEmpty
+                                            && section.containerValues.stickyFooter
+                                        {
+                                            HStack(alignment: .top) {
+                                                Text("\(sectionsIndex + 1). ")
+                                                section.footer
                                             }
                                             .frame(
                                                 maxWidth: .infinity,
                                                 alignment: .leading
                                             )
+                                            .font(.caption)
+                                            .foregroundStyle(Color.secondary)
+                                            .accessibilityElement(children: .combine)
+                                            .accessibilityAddTraits(.isSummaryElement)
+                                            .id("annotation-\(sectionsIndex + 1)")
                                         }
-                                    ),
-                                    containerValues: sectionValues,
-                                    footerIsEmpty: section.footer.isEmpty
-                                )
-                            )
-                            
-                            
-                            if !section.footer.isEmpty && (
-                                sectionValues.articleFooterPlacement == .afterContent || sectionValues.articleFooterPlacement == .automatic) && !sectionValues.stickyFooter
-                            {
-                                SectionFooterView(
-                                    containerValues: sectionValues
-                                ) {
-                                    section.footer
-                                }
-                                .padding(.top, 15)
-#if os(tvOS)
-                                .focusEffectDisabled()
-                                .focusable()
-#endif
-                            }
-                        }
-                        .accessibilityElement(children: .contain)
-                        .padding(
-                            .bottom,
-                            sectionsIndex < sections.count - 1 ?  (
-                                sectionValues.articleSectionSpacing ?? 20
-                            ) : 0
-                        )
-                    }
-                    
-                    let filteredSection = sections.filter(
-                        { return ($0.containerValues.articleFooterPlacement == .annotation || $0.containerValues.stickyFooter) && !(
-                            $0.footer.isEmpty
-                        )
-                        })
-                    
-                    if !filteredSection.isEmpty {
-                        VStack(alignment: .leading, spacing: 20) {
-                            Divider()
-                                .accessibilityHidden(true)
-
-                            VStack(alignment: .leading, spacing: 5) {
-                                ForEach(
-                                    Array(filteredSection.enumerated()),
-                                    id: \.element.id
-                                ) {
-                                    sectionsIndex,
-                                    section in
-                                    if !section.footer.isEmpty && section.containerValues.stickyFooter {
-                                        HStack(alignment: .top) {
-                                            Text("\(sectionsIndex + 1). ")
-                                            section.footer
-                                        }
-                                        .frame(
-                                            maxWidth: .infinity,
-                                            alignment: .leading
-                                        )
-                                        .font(.caption)
-                                        .foregroundStyle(Color.secondary)
-                                        .accessibilityElement(children: .combine)
-                                        .accessibilityAddTraits(.isSummaryElement)
-                                        .id("annotation-\(sectionsIndex + 1)")
                                     }
                                 }
                             }
+                            .padding(.top, 20)
                         }
-                        .padding(.top, 20)
+                    }
+
+                    if let annotations {
+                        annotationsSection(annotations)
                     }
                 }
-
-                if let annotations {
-                    annotationsSection(annotations)
-                }
+                #if os(visionOS)
+                    .padding(25)
+                #elseif os(watchOS)
+                    .padding(15)
+                #else
+                    .padding(20)
+                #endif
             }
-#if os(visionOS)
-            .padding(25)
-#elseif os(watchOS)
-            .padding(15)
-#else
-            .padding(20)
-#endif
-        }
-        .environment(\.openURL, OpenURLAction { url in
-            if url.scheme == "articleui-annotation",
-               let host = url.host() {
-                withAnimation {
-                    proxy.scrollTo("annotation-\(host)", anchor: .bottom)
+            .environment(
+                \.openURL,
+                OpenURLAction { url in
+                    if url.scheme == "articleui-annotation",
+                        let host = url.host()
+                    {
+                        withAnimation {
+                            proxy.scrollTo("annotation-\(host)", anchor: .bottom)
+                        }
+                        return .handled
+                    }
+                    return .systemAction
                 }
-                return .handled
-            }
-            return .systemAction
-        })
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-#if os(iOS)
-        .background(Color(uiColor: .systemGroupedBackground))
-#endif
-        } // ScrollViewReader
+            )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            #if os(iOS)
+                .background(Color(uiColor: .systemGroupedBackground))
+            #endif
+        }  // ScrollViewReader
     }
 
     private func annotationsSection(_ annotationsView: AnyView) -> some View {
@@ -467,7 +488,8 @@ public struct Article<Content: View, Style: ArticleStyle>: View {
             VStack(alignment: .leading, spacing: 5) {
                 Group(subviews: annotationsView) { subviews in
                     ForEach(Array(subviews.enumerated()), id: \.element.id) { index, subview in
-                        let idString = index < annotationIDs.count ? annotationIDs[index] : "\(index + 1)"
+                        let idString =
+                            index < annotationIDs.count ? annotationIDs[index] : "\(index + 1)"
                         HStack(alignment: .top) {
                             Text("\(index + 1). ")
                             subview
@@ -499,13 +521,16 @@ extension Article {
     public init<Data: RandomAccessCollection, C: View>(
         _ data: Data,
         @ViewBuilder content: @escaping (Data.Element) -> C
-    ) where Data.Element: Identifiable,
-    Content == ForEach<Data, Data.Element.ID, C>, Style == DefaultArticleStyle {
+    )
+    where
+        Data.Element: Identifiable,
+        Content == ForEach<Data, Data.Element.ID, C>, Style == DefaultArticleStyle
+    {
         self.init {
             ForEach(data, content: content)
         }
     }
-    
+
     /// Creates an instance that uniquely identifies and creates map content across updates based on the provided key path to the underlying data’s identifier.
     /// - Parameters:
     ///   - data: The data that the ``Article`` instance uses to create map content dynamically.
@@ -517,7 +542,11 @@ extension Article {
         _ data: Data,
         id: KeyPath<Data.Element, ID>,
         @ViewBuilder rowContent: @escaping (Data.Element) -> RowContent
-    ) where Content == ForEach<Data, ID, RowContent>, Data : RandomAccessCollection, ID : Hashable, RowContent : View, Style == DefaultArticleStyle  {
+    )
+    where
+        Content == ForEach<Data, ID, RowContent>, Data: RandomAccessCollection, ID: Hashable,
+        RowContent: View, Style == DefaultArticleStyle
+    {
         self.init {
             ForEach(data, id: id, content: rowContent)
         }
@@ -546,13 +575,13 @@ extension Article {
     NavigationStack {
         Article {
             Text(String(repeating: "Content 1 ", count: 10))
-            
+
             Section {
                 Text(String(repeating: "Content 2 ", count: 20))
-                
+
                 Text(String(repeating: "Content 2 ", count: 20))
                     .articleRowSeparatorTint(.accentColor)
-                
+
                 Text(String(repeating: "Content 2 ", count: 20))
             } header: {
                 Label("Header", systemImage: "2.circle")
@@ -561,7 +590,7 @@ extension Article {
             }
             .articleFooterPlacement(placement: .insideContent)
             .articleRowSpacing(30)
-            
+
             Section("Header 3") {
                 Text(String(repeating: "Content 3 ", count: 30))
             }
@@ -573,7 +602,7 @@ extension Article {
 
 #Preview("Data-Driven Content") {
     let texts = ["Apple", "Yuzu", "Banana"]
-    
+
     NavigationStack {
         Article(texts, id: \.self) { text in
             Text(text)

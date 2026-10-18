@@ -22,7 +22,7 @@ public struct DownloadLink: View {
     private var name: LocalizedStringKey
 
     private var downloadLinkStyle: DownloadLinkStyle
-    
+
     /// Launch the App Store and create a link to open the page for the specified App ID.
     /// - Parameter id: App Id determined by App Store Connect
     public init(id: String) {
@@ -30,7 +30,7 @@ public struct DownloadLink: View {
         self.name = LocalizedStringKey("Download")
         self.downloadLinkStyle = .automatic
     }
-    
+
     /// Launch the App Store and create a link to open the page for the specified App ID.
     /// - Parameters:
     ///   - id: App Id determined by App Store Connect
@@ -43,7 +43,7 @@ public struct DownloadLink: View {
         self.name = LocalizedStringKey("Download \(Text(name, bundle: .main))")
         self.downloadLinkStyle = .automatic
     }
-    
+
     internal init(
         id: String,
         name: LocalizedStringKey,
@@ -53,7 +53,7 @@ public struct DownloadLink: View {
         self.name = LocalizedStringKey("Download \(Text(name, bundle: .main))")
         self.downloadLinkStyle = downloadLinkStyle
     }
-    
+
     private var badgeImageName: String {
         if downloadLinkStyle == .light {
             "Download/LightDownload"
@@ -78,7 +78,7 @@ public struct DownloadLink: View {
         .accessibilityLabel(Text(name, bundle: .module))
         .accessibilityAddTraits(.isLink)
     }
-    
+
     /// Sets the given style for DownloadLinks within the view hierarchy
     /// - Parameter style: The style to set.
     /// - Returns: A view that uses the specified download button style
@@ -87,13 +87,13 @@ public struct DownloadLink: View {
     }
 }
 #if !os(watchOS) && !os(tvOS)
-#Preview("Light Mode") {
-    DownloadLink(id: "id6477782786")
-        .environment(\.colorScheme, .light)
-}
+    #Preview("Light Mode") {
+        DownloadLink(id: "id6477782786")
+            .environment(\.colorScheme, .light)
+    }
 
-#Preview("Dark Mode") {
-    DownloadLink(id: "id6477782786")
-        .environment(\.colorScheme, .dark)
-}
+    #Preview("Dark Mode") {
+        DownloadLink(id: "id6477782786")
+            .environment(\.colorScheme, .dark)
+    }
 #endif

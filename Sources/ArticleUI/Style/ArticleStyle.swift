@@ -16,10 +16,10 @@ import SwiftUI
 public protocol ArticleStyle {
     /// The properties of an article section.
     typealias Configuration = ArticleStyleConfiguration
-    
+
     /// A view that represents the body of an article section.
     associatedtype Body: View
-    
+
     /// Creates a view that represents the body of the article sections.
     /// - Parameter configuration: The properties of an article section.
     /// - Returns: View of an article section with adapted styles
@@ -43,13 +43,13 @@ public struct ArticleStyleConfiguration {
 
         var body: AnyView
     }
-    
+
     /// A view that describes a View in an Article Section
     let label: ArticleStyleConfiguration.Label
-    
+
     /// ContainerValues in an Article Section
-    let containerValues:  ContainerValues
-    
+    let containerValues: ContainerValues
+
     /// Is the content empty in the Footer
     let footerIsEmpty: Bool
 }
@@ -92,11 +92,11 @@ extension ArticleStyle where Self == GroupedArticleStyle {
 @available(tvOS 18, *)
 public struct DefaultArticleStyle: ArticleStyle {
     public func makeBody(configuration: Configuration) -> some View {
-#if os(visionOS)
-        return GroupedArticleStyle().makeBody(configuration: configuration)
-#else
-        return PlainArticleStyle().makeBody(configuration: configuration)
-#endif
+        #if os(visionOS)
+            return GroupedArticleStyle().makeBody(configuration: configuration)
+        #else
+            return PlainArticleStyle().makeBody(configuration: configuration)
+        #endif
     }
 }
 
@@ -110,12 +110,13 @@ public struct PlainArticleStyle: ArticleStyle {
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(
-                configuration.containerValues.articleRowInsets ?? EdgeInsets(
-                    top: 0,
-                    leading: 0,
-                    bottom: 0,
-                    trailing: 0
-                )
+                configuration.containerValues.articleRowInsets
+                    ?? EdgeInsets(
+                        top: 0,
+                        leading: 0,
+                        bottom: 0,
+                        trailing: 0
+                    )
             )
     }
 }
@@ -132,12 +133,15 @@ public struct GroupedArticleStyle: ArticleStyle {
 
         return configuration.label
             .padding(
-                configuration.containerValues.articleRowInsets ?? EdgeInsets(
-                    top: configuration.containerValues.articleSectionType == .default ? rowSpacing : 0,
-                    leading: 0,
-                    bottom: configuration.containerValues.articleSectionType == .default ? rowSpacing : 0,
-                    trailing: 0
-                )
+                configuration.containerValues.articleRowInsets
+                    ?? EdgeInsets(
+                        top: configuration.containerValues.articleSectionType == .default
+                            ? rowSpacing : 0,
+                        leading: 0,
+                        bottom: configuration.containerValues.articleSectionType == .default
+                            ? rowSpacing : 0,
+                        trailing: 0
+                    )
             )
             .padding(
                 configuration.containerValues.articleSectionType == .default ? .horizontal : .all,
@@ -146,13 +150,13 @@ public struct GroupedArticleStyle: ArticleStyle {
             .background {
                 if configuration.containerValues.articleSectionType == .default {
                     RoundedRectangle(cornerRadius: 25)
-#if os(macOS)
-                        .fill(Color.secondary.opacity(0.2))
-#elseif os(iOS)
-                        .fill(Color(uiColor: .secondarySystemGroupedBackground))
-#else
-                        .fill(.regularMaterial)
-#endif
+                        #if os(macOS)
+                            .fill(Color.secondary.opacity(0.2))
+                        #elseif os(iOS)
+                            .fill(Color(uiColor: .secondarySystemGroupedBackground))
+                        #else
+                            .fill(.regularMaterial)
+                        #endif
                 }
             }
     }

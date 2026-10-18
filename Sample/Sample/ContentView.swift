@@ -1,13 +1,12 @@
 //
 //  ContentView.swift
 //  Sample
-//  
+//
 //  Created by Keisuke Chinone on 2024/10/01.
 //
 
-
-import SwiftUI
 import ArticleUI
+import SwiftUI
 
 enum NoteID { case layout, watchOS }
 
@@ -25,13 +24,21 @@ struct ContentView: View {
                 }
 
                 Section {
-                    Text(AttributedString(localized: "Easily create a scrollable article UI[*](\(URL(annotation: NoteID.layout).absoluteString)); using Article and Section views, you can easily create views that include headings and content."))
+                    Text(
+                        AttributedString(
+                            localized:
+                                "Easily create a scrollable article UI[*](\(URL(annotation: NoteID.layout).absoluteString)); using Article and Section views, you can easily create views that include headings and content."
+                        ))
                 } header: {
                     Text("Build easily scrollable views")
                 }
 
                 Section {
-                    Text(AttributedString(localized: "This package supports many iOS as well as macOS, visionOS and watchOS[*](\(URL(annotation: NoteID.watchOS).absoluteString)). tvOS is in the process of scrolling adjustment."))
+                    Text(
+                        AttributedString(
+                            localized:
+                                "This package supports many iOS as well as macOS, visionOS and watchOS[*](\(URL(annotation: NoteID.watchOS).absoluteString)). tvOS is in the process of scrolling adjustment."
+                        ))
                 } header: {
                     Text("Support for many platforms")
                 }
@@ -51,27 +58,27 @@ struct ContentView: View {
                     Text("GitHub")
                 }
 
-#if !os(tvOS) && !os(watchOS)
-                Section {
-                    AppCard(
-                        name: "Japan Corp Info",
-                        subtitle: "Manage Japan corporation info",
-                        iconName: "Japan Corp Info",
-                        appID: "id6477782786"
-                    ) {
-                        Text(
-                            """
-The Japan Corp Info App is the best way to easily manage your Japan corporation information.
-The app allows you to easily search gBizINFO data provided by METI, a ministry of the Japanese government.
-The searched data can be saved in the device and can be viewed offline. You can also add memos and tags to each company, which can be used for corporate analysis.
-"""
-                        )
+                #if !os(tvOS) && !os(watchOS)
+                    Section {
+                        AppCard(
+                            name: "Japan Corp Info",
+                            subtitle: "Manage Japan corporation info",
+                            iconName: "Japan Corp Info",
+                            appID: "id6477782786"
+                        ) {
+                            Text(
+                                """
+                                The Japan Corp Info App is the best way to easily manage your Japan corporation information.
+                                The app allows you to easily search gBizINFO data provided by METI, a ministry of the Japanese government.
+                                The searched data can be saved in the device and can be viewed offline. You can also add memos and tags to each company, which can be used for corporate analysis.
+                                """
+                            )
+                        }
+                    } header: {
+                        Text("Using this package")
                     }
-                } header: {
-                    Text("Using this package")
-                }
-                .articleRowSeparator(true)
-#endif
+                    .articleRowSeparator(true)
+                #endif
 
                 Section {
                     HStack(alignment: .top) {
@@ -124,7 +131,9 @@ The searched data can be saved in the device and can be viewed offline. You can 
                     )
                 }
             } annotation: {
-                AnnotationItem(NoteID.layout, "Article and Section views automatically handle layout and styling.")
+                AnnotationItem(
+                    NoteID.layout,
+                    "Article and Section views automatically handle layout and styling.")
                 AnnotationItem(NoteID.watchOS, "watchOS support requires watchOS 11 or later.")
             }
             .articleStyle(.grouped)

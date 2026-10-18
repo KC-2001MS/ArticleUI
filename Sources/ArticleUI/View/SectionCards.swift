@@ -15,9 +15,9 @@ import SwiftUI
 @available(tvOS 18, *)
 internal struct SectionHeaderView<Content: View>: View {
     let containerValues: ContainerValues?
-    
+
     @ViewBuilder private var content: Content
-    
+
     internal init(
         containerValues: ContainerValues? = nil,
         @ViewBuilder content: () -> Content
@@ -25,7 +25,7 @@ internal struct SectionHeaderView<Content: View>: View {
         self.containerValues = containerValues
         self.content = content()
     }
-    
+
     private var tintColor: Color {
         containerValues?.articleSectionHeaderTint ?? Color.accentColor
     }
@@ -35,27 +35,27 @@ internal struct SectionHeaderView<Content: View>: View {
             Group(subviews: content) { subviews in
                 if let first = subviews.first {
                     first
-#if !os(watchOS) && !os(tvOS)
-                        .font(.title)
-#else
-                        .font(.headline)
-#endif
+                        #if !os(watchOS) && !os(tvOS)
+                            .font(.title)
+                        #else
+                            .font(.headline)
+                        #endif
                         .bold()
-#if !os(visionOS)
-                        .foregroundStyle(tintColor)
-#endif
+                        #if !os(visionOS)
+                            .foregroundStyle(tintColor)
+                        #endif
                 }
 
                 ForEach(subviews.dropFirst(1)) { subview in
                     subview
-#if !os(watchOS) && !os(tvOS)
-                        .font(.subheadline)
-#else
-                        .font(.caption)
-#endif
-#if !os(visionOS)
-                        .foregroundStyle(.secondary)
-#endif
+                        #if !os(watchOS) && !os(tvOS)
+                            .font(.subheadline)
+                        #else
+                            .font(.caption)
+                        #endif
+                        #if !os(visionOS)
+                            .foregroundStyle(.secondary)
+                        #endif
                 }
             }
         }
@@ -72,9 +72,9 @@ internal struct SectionHeaderView<Content: View>: View {
 @available(tvOS 18, *)
 internal struct SectionFooterView<Content: View>: View {
     let containerValues: ContainerValues?
-    
-    @ViewBuilder private  var content: Content
-    
+
+    @ViewBuilder private var content: Content
+
     internal init(
         containerValues: ContainerValues? = nil,
         @ViewBuilder _ content: () -> Content
@@ -82,7 +82,7 @@ internal struct SectionFooterView<Content: View>: View {
         self.containerValues = containerValues
         self.content = content()
     }
-    
+
     internal var body: some View {
         VStack(alignment: .trailing, spacing: 3) {
             content
@@ -111,7 +111,7 @@ internal struct SectionFooterView<Content: View>: View {
     }
 }
 
-#Preview("Footer",traits: .sizeThatFitsLayout) {
+#Preview("Footer", traits: .sizeThatFitsLayout) {
     SectionFooterView {
         Text("Footer")
     }
